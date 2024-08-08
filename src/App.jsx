@@ -1,8 +1,10 @@
 import {Route, Routes} from 'react-router-dom';
 import Homepage from "./pages/Homepage";
+import Navbar from './components/Navbar';
 import SignupPage from "./pages/Auth/SignupPage";
 import LoginPage from './pages/Auth/LoginPage';
 import MainServicesPage from './pages/MainServicePage';
+import UserProfile from './pages/UserProfile';
 import Private from './components/Private';
 import Anon from './components/Anon';
 
@@ -12,6 +14,8 @@ function App() {
   return (
     <div>
 
+  <Navbar/>
+
     <Routes>
 
       <Route 
@@ -19,28 +23,41 @@ function App() {
         element={<Homepage/>}
       />
 
-      <Route
-        path='/main'
-        element={<MainServicesPage/>}
-      />
+      
 
-      <Route
-        path='/signup'
-        element={
-          <Anon>
-            <SignupPage/>
-          </Anon>
-        }
-      />
+        <Route
+          path='/main'
+          element={<MainServicesPage/>}
+        />
 
-      <Route
-        path='/login'
-        element={
-          <Anon>
-            <LoginPage/>
-          </Anon>
-        }
-      />
+        <Route
+          path='/signup'
+          element={
+            <Anon>
+              <SignupPage/>
+            </Anon>
+          }
+        />
+
+        <Route
+          path='/login'
+          element={
+            <Anon>
+              <LoginPage/>
+            </Anon>
+          }
+        />
+
+        <Route 
+          path='/user-profile'
+          element={
+            <Private>
+              <UserProfile/>
+            </Private>
+          }
+        />
+
+      
 
       
     </Routes>
