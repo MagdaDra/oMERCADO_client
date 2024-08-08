@@ -3,23 +3,34 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function SignupPage() {
-	const [username, setUsername] = useState;
+	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [typeOfUser, setTypeOfUser] = useState('');
 	const [errorMessage, setErrorMessage] = useState(null);
+
+	const checkboxes = [
+		{ id: 1, label: 'Customer' },
+		{ id: 2, label: 'Seller' },
+	];
 
 	const navigate = useNavigate();
 
-	const handleUsername = (e) => setUsername(e.target.value);
+	const handleName = (e) => setName(e.target.value);
 	const handleEmail = (e) => setEmail(e.target.value);
 	const handlePassword = (e) => setPassword(e.target.value);
+
+	const handleTypeOfUser = (e) => {
+		setTypeOfUser(e.target.value);
+	};
 
 	const handleSubmit = async (e) => {
 		// Prevent reloading the page
 		e.preventDefault();
 		try {
 			await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, {
-				username,
+				name,
+				typeOfUser,
 				email,
 				password,
 			});
@@ -34,14 +45,29 @@ function SignupPage() {
 			<h2>Signup</h2>
 
 			<form onSubmit={handleSubmit}>
-				<label htmlFor='username'>Username</label>
+				<label htmlFor='name'>Username</label>
 				<input
 					type='text'
-					name='username'
-					id='username'
-					value={username}
-					onChange={handleUsername}
+					name='name'
+					id='name'
+					value={name}
+					onChange={handleName}
 				/>
+
+				<label htmlFor='typeOfUser'>Type of user</label>
+				{checkboxes.map((checkbox) => (
+					<div key={checkbox.id}>
+						<input
+							type='checkbox'
+							name='typeOfUser'
+							value={checkbox.label}
+							checked={typeOfUser === checkbox.label}
+							onChange={handleTypeOfUser}
+						/>
+						{checkbox.label}
+					</div>
+				))}
+
 				<label htmlFor='email'>Email</label>
 				<input
 					type='email'
@@ -50,6 +76,7 @@ function SignupPage() {
 					value={email}
 					onChange={handleEmail}
 				/>
+
 				<label htmlFor='password'>Password</label>
 				<input
 					type='password'
@@ -64,9 +91,8 @@ function SignupPage() {
 
 			{errorMessage && <p className='error-message'> {errorMessage} </p>}
 
-            <p>Already have an account?</p>
-            <Link to='/login'>Log in</Link>
-
+			<p>Already have an account?</p>
+			<Link to='/login'>Log in</Link>
 		</div>
 	);
 }

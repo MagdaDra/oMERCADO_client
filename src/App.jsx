@@ -3,6 +3,8 @@ import Homepage from "./pages/Homepage";
 import SignupPage from "./pages/Auth/SignupPage";
 import LoginPage from './pages/Auth/LoginPage';
 import MainServicesPage from './pages/MainServicePage';
+import Private from './components/Private';
+import Anon from './components/Anon';
 
 function App() {
 
@@ -24,12 +26,20 @@ function App() {
 
       <Route
         path='/signup'
-        element={<SignupPage/>}
+        element={
+          <Anon>
+            <SignupPage/>
+          </Anon>
+        }
       />
 
       <Route
         path='/login'
-        element={<LoginPage/>}
+        element={
+          <Anon>
+            <LoginPage/>
+          </Anon>
+        }
       />
 
       
