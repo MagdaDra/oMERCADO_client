@@ -1,9 +1,11 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 
 function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);
+
+	console.log(user)
 
 	return (
 		<nav className='Navbar'>
@@ -15,20 +17,27 @@ function Navbar() {
 				/>
 			)}
 			<ul>
-				<NavLink
-					className={({ isActive }) => (isActive ? 'selected' : '')}
-					to='/main'>
-					Discover services
-				</NavLink>
+				<Link to='/main'>
+					<button>Discover services</button>
+				</Link>
 
-                {!loading && user && (
-                    <>
-                        <Link to='/user-profile'>
-                            <button>User profile</button>
-                        </Link>
-                        <button onClick={logout}>Log out</button>
-                    </>
-                )}
+				{!loading && user && (
+					
+					<>
+						<Link to='/user-profile'>
+							<button>User profile</button>
+						</Link>
+						<button onClick={logout}>Log out</button>
+					</>
+				)}
+
+				{!loading && user && user.typeOfUser === 'Seller' && (
+					<>
+						<Link to='/add-service'>
+							<button>Add service</button>
+						</Link>
+					</>
+				)}
 
 				{!loading && !user && (
 					<>

@@ -7,6 +7,7 @@ import MainServicesPage from './pages/MainServicePage';
 import UserProfile from './pages/UserProfile';
 import Private from './components/Private';
 import Anon from './components/Anon';
+import AddService from './pages/AddService';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
   return (
     <div>
 
-  <Navbar/>
+    <Navbar/>
 
     <Routes>
 
@@ -56,6 +57,16 @@ function App() {
             </Private>
           }
         />
+
+        <Route
+          path='/add-service'
+          element={
+            <Private>
+              <AddService/>
+            </Private>
+          } 
+
+           />
 
       
 
