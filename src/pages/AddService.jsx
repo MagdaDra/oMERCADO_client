@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServicesAPIService from '../services/services.api';
 import axios from 'axios';
+import {AuthContext} from '../context/auth.context'
 
 const servicesService = new ServicesAPIService();
 
@@ -13,7 +14,20 @@ const AddService = () => {
 	const [date, setDate] = useState('');
 	const [img, setImg] = useState('');
 	const [loading, setLoading] = useState(false);
-	const [category, setCategory] = useState('');
+	const [category, setCategory] = useState([]);
+
+	const {user} = useContext(AuthContext)
+
+	const categories = [
+		{ id: 1, label: 'IT' },
+		{ id: 2, label: 'Art' },
+		{ id: 3, label: 'Design' },
+		{ id: 4, label: 'Sport' },
+		{ id: 5, label: 'Outdoor' },
+		{ id: 6, label: 'Food' },
+		{ id: 7, label: 'Fashion' },
+		{ id: 8, label: 'Sightseeing' },
+	];
 
 	const navigate = useNavigate();
 
@@ -59,7 +73,7 @@ const AddService = () => {
 	};
 
 	const handleCategory = (e) => {
-		setCategory(e.target.value);
+		setCategory([...category, e.target.value]);
 	};
 
 	const handleSubmit = async (e) => {
@@ -73,6 +87,7 @@ const AddService = () => {
 			date,
 			img,
 			category,
+			createdBy: user._id
 		};
 		try {
 			await servicesService.createService(requestBody);
@@ -137,12 +152,17 @@ const AddService = () => {
 				/>
 
 				<label>Category</label>
-				<input
-					type='text'
-					name='category'
-					value={category}
-					onChange={handleCategory}
-				/>
+				{categories.map((categoryValue) => (
+					<div key={categoryValue.id}>
+						<input
+							type='checkbox'
+							name='category'
+							value={categoryValue.label}
+							onChange={handleCategory}
+						/>
+						{categoryValue.label}
+					</div>
+				))}
 
 				<button
 					type='submit'

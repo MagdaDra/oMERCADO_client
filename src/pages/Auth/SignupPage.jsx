@@ -56,7 +56,7 @@ function SignupPage() {
 
 				<label htmlFor='typeOfUser'>Type of user</label>
 				{checkboxes.map((checkbox) => (
-					<div key={checkbox.id}>
+					<div key={checkbox.id} className='singup-checkbox'>
 						<input
 							type='checkbox'
 							name='typeOfUser'
