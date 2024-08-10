@@ -1,9 +1,42 @@
-function MainServicesPage() {
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import ServicesAPIService from '../services/services.api';
+
+const servicesService = new ServicesAPIService();
+
+const MainServicesPage = () => {
+	const [services, setServices] = useState([]);
+
+	const fetchData = async () => {
+		try {
+			const response = await servicesService.getAllServices();
+			setServices(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	useEffect(() => {
+		console.log('useEffect: Mounting');
+		fetchData();
+	}, []);
+
 	return (
-		<div>
-			<h1>This is the main page where all the services will be displayed</h1>
-		</div>
+		<>
+			<h1>Services</h1>
+			{services.map((service) => {
+				return (
+					<div key={service._id}>
+						<Link to={`/services/${service._id}`}>
+							<img className='service-img' src={service.img}></img>
+							<h2>{service.serviceName}</h2>
+						</Link>
+						<p>Price: {service.price} € </p>
+					</div>
+				);
+			})}
+		</>
 	);
-}
+};
 
 export default MainServicesPage;
