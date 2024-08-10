@@ -9,7 +9,7 @@ function Navbar() {
 
 	return (
 		<nav className='Navbar'>
-			<p>{user ? ('Hello ', user.name) : ''}</p>
+			<p>{user ? (`Hello ${user.name}`) : ''}</p>
 			{user && (
 				<img
 					className='profile-pic'
