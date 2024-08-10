@@ -7,7 +7,7 @@ class UserAPIService {
 	}
 
 	getUserById(userId) {
-		return axios.get(`${this.baseUrl}/api/user/${userId}`, {
+		return axios.get(`${this.baseURL}/api/user/${userId}`, {
 			headers: {
 				Authorization: `Bearer ${this.authToken}`,
 			},
@@ -15,7 +15,7 @@ class UserAPIService {
 	}
 
 	editUser(userId) {
-		return axios.put(`${this.baseUrl}/api/user/${userId}`, {
+		return axios.put(`${this.baseURL}/api/user/${userId}`, {
 			headers: {
 				Authorization: `Bearer ${this.authToken}`,
 			},
@@ -23,7 +23,7 @@ class UserAPIService {
 	}
 
 	deleteUser(userId) {
-		return axios.delete(`${this.baseUrl}/api/user/${userId}`, {
+		return axios.delete(`${this.baseURL}/api/user/${userId}`, {
 			headers: {
 				Authorization: `Bearer ${this.authToken}`,
 			},

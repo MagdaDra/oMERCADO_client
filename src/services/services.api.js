@@ -39,11 +39,15 @@ class ServicesAPIService {
 	}
 
     deleteService(serviceId) {
-		return axios.delete(`${this.baseURL}/api/services/${serviceId}`, {
+		return axios
+		.delete(`${this.baseURL}/api/services/${serviceId}`, {
 			headers: {
 				Authorization: `Bearer ${this.authToken}`,
 			},
-		});
+		})
+		.catch((error) => {
+			console.error('Error deleting the service', error);
+		})
 	}
 }
 
