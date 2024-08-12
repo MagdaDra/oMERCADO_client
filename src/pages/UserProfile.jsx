@@ -10,8 +10,8 @@ const servicesService = new ServicesAPIService();
 const UserProfile = () => {
 	const [servicesOffered, setServicesOffered] = useState([]);
 	const [servicesBought, setServicesBought] = useState([]);
-	const [servicesSold, setServicesSold] = useState([])
-	const [userDetails, setUserDetails] = useState(null);
+	//const [servicesSold, setServicesSold] = useState([])
+	const [userDetails, setUserDetails] = useState('');
 
 
 	const { user } = useContext(AuthContext);
@@ -21,6 +21,7 @@ const UserProfile = () => {
 			const response = await userService.getUserById(user._id);
 
 			setUserDetails(response.data);
+			console.log('User data: ',response.data)
 			setServicesOffered(response.data.servicesOffered);
 			setServicesBought(response.data.servicesBought);
 
@@ -48,8 +49,14 @@ const UserProfile = () => {
 		getUserDetails();
 	}, []);
 
+
 	return (
 		<>
+			
+			<h1>User details</h1>
+			<p>Name: {userDetails.name}</p>
+			<p>Email: {userDetails.email} </p>
+			
 			<h1>Services Offered</h1>
 			{servicesOffered.map((service) => {
 				return (
@@ -71,6 +78,22 @@ const UserProfile = () => {
 						</button>
 					</div>
 				);
+			})}
+			
+			<h1>Services Bought</h1>
+			{servicesBought.map((service) => {
+				return (
+					<div key={service._id}>
+					<Link to={`/services/${service._id}`}>
+							<h2>{service.serviceName}</h2>
+							<img
+								className='service-img'
+								src={service.img}></img>
+						</Link>
+						<p>Price: {service.price} € </p>
+						<p>Quantity: {service.quantity} </p>					
+					</div>
+				)
 			})}
 		</>
 	);

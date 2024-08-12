@@ -66,7 +66,7 @@ const AddService = () => {
 			setImg(response.data.fileUrl);
 		} catch (error) {
 			setLoading(false);
-			console.error(error);
+			console.error('Error loading the image in AddService ', error);
 		}
 	};
 
@@ -99,7 +99,7 @@ const AddService = () => {
 			navigate('/main');
 			navigate(0);
 		} catch (error) {
-			console.error(error);
+			console.error('Error in AddService ', error);
 		}
 	};
 

@@ -12,7 +12,7 @@ const MainServicesPage = () => {
 			const response = await servicesService.getAllServices();
 			setServices(response.data);
 		} catch (error) {
-			console.error(error);
+			console.error('Error fetching data of all services in MainServicePage', error);
 		}
 	};
 

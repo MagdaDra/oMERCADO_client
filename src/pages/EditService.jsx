@@ -67,7 +67,7 @@ const EditService = () => {
 			setImg(response.data.fileUrl);
 		} catch (error) {
 			setLoading(false);
-			console.error(error);
+			console.error('Error adding the image in EditService', error);
 		}
 	};
 
@@ -98,7 +98,7 @@ const EditService = () => {
 			await servicesService.editService(serviceId, updatedService);
 			navigate(`/services/${serviceId}`);
 		} catch (error) {
-			console.error(error);
+			console.error('Error submitting the form (handleSubmit) in EditService', error);
 		}
 	};
 
@@ -113,7 +113,7 @@ const EditService = () => {
 			setImg(response.data.img);
 			setCategory(response.data.category);
 		} catch (error) {
-			console.error(error);
+			console.error('Error fetching single service data in EditService', error);
 		}
 	};
 
