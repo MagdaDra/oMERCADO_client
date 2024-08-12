@@ -1,6 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 import UserAPIService from '../services/user.api';
 import ServicesAPIService from '../services/services.api';
@@ -13,7 +12,6 @@ const UserProfile = () => {
 	const [servicesBought, setServicesBought] = useState([]);
 	const [userDetails, setUserDetails] = useState(null);
 
-	const navigate = useNavigate();
 
 	const { user } = useContext(AuthContext);
 
@@ -60,14 +58,14 @@ const UserProfile = () => {
 				return (
 					<div key={service._id}>
 						<Link to={`/services/${service._id}`}>
+							<h2>{service.serviceName}</h2>
 							<img
 								className='service-img'
 								src={service.img}></img>
-							<h2>{service.serviceName}</h2>
 						</Link>
 						<p>Price: {service.price} € </p>
 						<p>Quantity: {service.quantity} </p>
-						<Link to={`/services/`}>
+						<Link to={`/services/edit/${service._id}`}>
 							<button>Edit</button>
 						</Link>
 						<button

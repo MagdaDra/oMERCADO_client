@@ -30,8 +30,8 @@ class ServicesAPIService {
 		});
 	}
 
-    editService(serviceId) {
-		return axios.put(`${this.baseURL}/api/services/${serviceId}`, {
+    editService(serviceId, updatedService) {
+		return axios.put(`${this.baseURL}/api/services/edit/${serviceId}`, updatedService, {
 			headers: {
 				Authorization: `Bearer ${this.authToken}`,
 			},

@@ -1,12 +1,12 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ServicesAPIService from '../services/services.api';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import {AuthContext} from '../context/auth.context'
+import { useNavigate, useParams } from 'react-router-dom';
+import ServicesAPIService from '../services/services.api';
+import { AuthContext } from '../context/auth.context';
 
 const servicesService = new ServicesAPIService();
 
-const AddService = () => {
+const EditService = () => {
 	const [serviceName, setServiceName] = useState('');
 	const [serviceDescription, setServiceDescription] = useState('');
 	const [price, setPrice] = useState(0);
@@ -16,7 +16,9 @@ const AddService = () => {
 	const [loading, setLoading] = useState(false);
 	const [category, setCategory] = useState([]);
 
-	const {user} = useContext(AuthContext)
+	const { user } = useContext(AuthContext);
+	const { serviceId } = useParams();
+    
 
 	const categories = [
 		{ id: 1, label: 'IT' },
@@ -77,7 +79,7 @@ const AddService = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const requestBody = {
+		const updatedService = {
 			serviceName,
 			serviceDescription,
 			price,
@@ -85,20 +87,38 @@ const AddService = () => {
 			date,
 			img,
 			category,
-			createdBy: user._id
+			createdBy: user._id,
 		};
 		try {
-			await servicesService.createService(requestBody);
-			navigate('/main');
-			navigate(0);
+			await servicesService.editService(serviceId, updatedService);
+			navigate(`/services/${serviceId}`);
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
+    const getSingleService = async () => {
+        try {
+            const response = await servicesService.getServiceById(serviceId);
+            setServiceName(response.data.serviceName);
+            setServiceDescription(response.data.serviceDescription);
+            setPrice(response.data.price);
+            setQuantity(response.data.quantity);
+            setDate(response.data.date);
+            //setCategory(response.data.category)
+
+        } catch (error) {
+            console.error(error)
+        }
+    };
+
+    useEffect(() => {
+        getSingleService()
+    }, [])
+
 	return (
 		<div>
-			<h2>Add Service</h2>
+			<h2>Edit Service</h2>
 
 			<form onSubmit={handleSubmit}>
 				<label>Name</label>
@@ -165,11 +185,11 @@ const AddService = () => {
 				<button
 					type='submit'
 					disabled={loading}>
-					Add Service
+					Edit
 				</button>
 			</form>
 		</div>
 	);
 };
 
-export default AddService;
+export default EditService;

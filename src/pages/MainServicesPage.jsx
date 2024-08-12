@@ -28,8 +28,8 @@ const MainServicesPage = () => {
 				return (
 					<div key={service._id}>
 						<Link to={`/services/${service._id}`}>
-							<img className='service-img' src={service.img}></img>
 							<h2>{service.serviceName}</h2>
+							<img className='service-img' src={service.img}></img>
 						</Link>
 						<p>Price: {service.price} € </p>
 					</div>

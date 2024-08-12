@@ -3,11 +3,13 @@ import Homepage from './pages/Homepage';
 import Navbar from './components/Navbar';
 import SignupPage from './pages/Auth/SignupPage';
 import LoginPage from './pages/Auth/LoginPage';
-import MainServicesPage from './pages/MainServicePage';
+import MainServicesPage from './pages/MainServicesPage';
 import UserProfile from './pages/UserProfile';
 import Private from './components/Private';
 import Anon from './components/Anon';
 import AddService from './pages/AddService';
+import SingleServicePage from './pages/SingleServicePage';
+import EditService from './pages/EditService';
 import './App.css';
 
 function App() {
@@ -61,6 +63,18 @@ function App() {
 						</Private>
 					}
 				/>
+
+				<Route
+					path='/services/:serviceId'
+					element={<SingleServicePage/>}
+				/>
+
+				<Route 
+					path='/services/edit/:serviceId'
+					element={<EditService/>}
+				/>
+
+
 			</Routes>
 		</div>
 	);
