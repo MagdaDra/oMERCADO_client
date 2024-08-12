@@ -31,7 +31,7 @@ function Navbar() {
 					</>
 				)}
 
-				{!loading && user && user.typeOfUser === 'Seller' && (
+				{!loading && user && user.typeOfUser.includes('Seller') && (
 					<>
 						<Link to='/add-service'>
 							<button>Add service</button>

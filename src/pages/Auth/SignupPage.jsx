@@ -6,7 +6,7 @@ function SignupPage() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [typeOfUser, setTypeOfUser] = useState('');
+	const [typeOfUser, setTypeOfUser] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 
 	const checkboxes = [
@@ -21,7 +21,14 @@ function SignupPage() {
 	const handlePassword = (e) => setPassword(e.target.value);
 
 	const handleTypeOfUser = (e) => {
-		setTypeOfUser(e.target.value);
+
+		const selectedType = e.target.value;
+
+		setTypeOfUser((prevTypesOfUser) => 
+			prevTypesOfUser.includes(selectedType)
+			? prevTypesOfUser.filter((type) => type !== selectedType)
+			: [...typeOfUser, e.target.value]
+			);
 	};
 
 	const handleSubmit = async (e) => {
@@ -61,7 +68,7 @@ function SignupPage() {
 							type='checkbox'
 							name='typeOfUser'
 							value={checkbox.label}
-							checked={typeOfUser === checkbox.label}
+							checked={typeOfUser.includes(checkbox.label)}
 							onChange={handleTypeOfUser}
 						/>
 						{checkbox.label}

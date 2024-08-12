@@ -18,17 +18,13 @@ const UserProfile = () => {
 	const getUserDetails = async () => {
 		try {
 			const response = await userService.getUserById(user._id);
-			// const response = await axios.get(
-			// 	`${import.meta.env.VITE_API_URL}/api/user/${user._id}`,
-			// );
+
 			setUserDetails(response.data);
 			setServicesOffered(response.data.servicesOffered);
 			setServicesBought(response.data.servicesBought);
-			console.log(`User details:`, response.data);
-			console.log(`Services offered: `, response.data.servicesOffered);
-			console.log(`Services bought: `, response.data.servicesBought);
+
 		} catch (error) {
-			console.error(error);
+			console.error('Failed to fetch user details in UserProfile', error);
 		}
 	};
 
@@ -43,7 +39,7 @@ const UserProfile = () => {
 			);
 
 		} catch (error) {
-			console.error('Failed to delete the service', error)
+			console.error('Failed to delete the service from UserProfile', error)
 		}
 	}
 
