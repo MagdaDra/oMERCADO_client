@@ -1,8 +1,9 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import ServicesAPIService from '../services/services.api';
 import { AuthContext } from '../context/auth.context';
 import UserAPIService from '../services/user.api';
+
 
 const userService = new UserAPIService();
 const servicesService = new ServicesAPIService();
@@ -12,6 +13,7 @@ const SingleServicePage = () => {
 	const { serviceId } = useParams();
 	const [servicesOffered, setServicesOffered] = useState([]);
 	const { user } = useContext(AuthContext);
+    const navigate = useNavigate()
 
 	const getUserDetails = async () => {
 		try {
@@ -44,7 +46,21 @@ const SingleServicePage = () => {
 		getSingleService();
 	}, []);
 
-    const isServiceOffered = servicesOffered.some(service => service._id === serviceId)
+    // Checking if the user created the service (if the serviceId is in the servicesOffered array of the user). If yes they will only see 'edit' and 'delete' button.
+    // Otherwise they will see 'add to cart' button
+
+    const isServiceOffered = servicesOffered.some(service => service._id === serviceId) 
+
+    const handleDelete = async (serviceId) => {
+		try {
+			await servicesService.deleteService(serviceId);
+			navigate('/main')
+	
+
+		} catch (error) {
+			console.error('Failed to delete the service from SingleServicePage', error)
+		}
+	}
 
 	return (
 		<div>
@@ -74,7 +90,7 @@ const SingleServicePage = () => {
                             <Link to={`/services/edit/${serviceId}`} >
                                 <button>Edit</button>
                             </Link>
-                            <button>Delete</button>
+                            <button onClick={() => handleDelete(serviceId)}>Delete</button>
                         </>
                     ) : (
                         <button>Add to cart</button>
