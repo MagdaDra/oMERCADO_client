@@ -18,7 +18,6 @@ const SingleServicePage = () => {
 	const getUserDetails = async () => {
 		try {
 			const response = await userService.getUserById(user._id);
-            console.log('API response:', response.data.servicesOffered);
 			setServicesOffered(response.data.servicesOffered);
 
             

@@ -10,6 +10,7 @@ const servicesService = new ServicesAPIService();
 const UserProfile = () => {
 	const [servicesOffered, setServicesOffered] = useState([]);
 	const [servicesBought, setServicesBought] = useState([]);
+	const [servicesSold, setServicesSold] = useState([])
 	const [userDetails, setUserDetails] = useState(null);
 
 
