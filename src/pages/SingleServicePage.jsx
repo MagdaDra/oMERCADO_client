@@ -32,6 +32,13 @@ const SingleServicePage = () => {
                     <h2>{service.serviceName}</h2>
                     <img className='service-img' src={service.img}></img>
                     <p>{service.serviceDescription}</p>
+                    {service.category.map((item) => {
+                       return(
+                        <div key={service.category.indexOf(item)}>
+                            <p>#{item}</p>
+                        </div> 
+                        )
+                    })}
                     <p>Date: {service.date}</p>
                     <p>Available spots: {service.quantity}</p>
                     <p>Price: {service.price} €</p>

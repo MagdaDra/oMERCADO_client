@@ -71,7 +71,14 @@ const AddService = () => {
 	};
 
 	const handleCategory = (e) => {
-		setCategory([...category, e.target.value]);
+
+		const selectedCategory = e.target.value;
+
+		setCategory((prevCategories) => 
+			prevCategories.includes(selectedCategory) 
+			? prevCategories.filter((cat) => cat !== selectedCategory)
+			: [...category, e.target.value]
+			)
 	};
 
 	const handleSubmit = async (e) => {

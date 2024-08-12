@@ -18,7 +18,6 @@ const EditService = () => {
 
 	const { user } = useContext(AuthContext);
 	const { serviceId } = useParams();
-    
 
 	const categories = [
 		{ id: 1, label: 'IT' },
@@ -73,7 +72,13 @@ const EditService = () => {
 	};
 
 	const handleCategory = (e) => {
-		setCategory([...category, e.target.value]);
+		const selectedCategory = e.target.value;
+
+		setCategory((prevCategories) => 
+			prevCategories.includes(selectedCategory) 
+			? prevCategories.filter((cat) => cat !== selectedCategory)
+			: [...category, e.target.value]
+			)
 	};
 
 	const handleSubmit = async (e) => {
@@ -97,24 +102,24 @@ const EditService = () => {
 		}
 	};
 
-    const getSingleService = async () => {
-        try {
-            const response = await servicesService.getServiceById(serviceId);
-            setServiceName(response.data.serviceName);
-            setServiceDescription(response.data.serviceDescription);
-            setPrice(response.data.price);
-            setQuantity(response.data.quantity);
-            setDate(response.data.date);
-            //setCategory(response.data.category)
+	const getSingleService = async () => {
+		try {
+			const response = await servicesService.getServiceById(serviceId);
+			setServiceName(response.data.serviceName);
+			setServiceDescription(response.data.serviceDescription);
+			setPrice(response.data.price);
+			setQuantity(response.data.quantity);
+			setDate(response.data.date);
+			setImg(response.data.img);
+			setCategory(response.data.category);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
-        } catch (error) {
-            console.error(error)
-        }
-    };
-
-    useEffect(() => {
-        getSingleService()
-    }, [])
+	useEffect(() => {
+		getSingleService();
+	}, []);
 
 	return (
 		<div>
@@ -177,6 +182,7 @@ const EditService = () => {
 							name='category'
 							value={categoryValue.label}
 							onChange={handleCategory}
+                            checked={category.includes(categoryValue.label)} // this checks if the category is selected
 						/>
 						{categoryValue.label}
 					</div>
