@@ -10,6 +10,7 @@ import Anon from './components/Anon';
 import AddService from './pages/AddService';
 import SingleServicePage from './pages/SingleServicePage';
 import EditService from './pages/EditService';
+import Cart from './pages/Cart';
 import './App.css';
 
 function App() {
@@ -72,6 +73,11 @@ function App() {
 				<Route 
 					path='/services/edit/:serviceId'
 					element={<EditService/>}
+				/>
+
+				<Route 
+					path='/cart'
+					element={<Cart/>}
 				/>
 
 

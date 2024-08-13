@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServicesAPIService from '../services/services.api';
 import axios from 'axios';
-import {AuthContext} from '../context/auth.context'
+import { AuthContext } from '../context/auth.context';
 
 const servicesService = new ServicesAPIService();
 
@@ -15,8 +15,9 @@ const AddService = () => {
 	const [img, setImg] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [category, setCategory] = useState([]);
+	const [isActive, setIsActive] = useState(true);
 
-	const {user} = useContext(AuthContext)
+	const { user } = useContext(AuthContext);
 
 	const categories = [
 		{ id: 1, label: 'IT' },
@@ -42,7 +43,15 @@ const AddService = () => {
 	};
 
 	const handleQuantity = (e) => {
-		setQuantity(e.target.value);
+		const value = Number(e.target.value);
+
+		if (value > 0) {
+			setQuantity(value);
+			setIsActive(true);
+		} else {
+			setQuantity(0);
+			setIsActive(false);
+		}
 	};
 
 	const handleDate = (e) => {
@@ -71,14 +80,13 @@ const AddService = () => {
 	};
 
 	const handleCategory = (e) => {
-
 		const selectedCategory = e.target.value;
 
-		setCategory((prevCategories) => 
-			prevCategories.includes(selectedCategory) 
-			? prevCategories.filter((cat) => cat !== selectedCategory)
-			: [...category, e.target.value]
-			)
+		setCategory((prevCategories) =>
+			prevCategories.includes(selectedCategory)
+				? prevCategories.filter((cat) => cat !== selectedCategory)
+				: [...category, e.target.value],
+		);
 	};
 
 	const handleSubmit = async (e) => {
@@ -92,7 +100,8 @@ const AddService = () => {
 			date,
 			img,
 			category,
-			createdBy: user._id
+			createdBy: user._id,
+			isActive,
 		};
 		try {
 			await servicesService.createService(requestBody);

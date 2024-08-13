@@ -82,7 +82,7 @@ const SingleServicePage = () => {
                         );
                     })}
                     <p>Date: {service.date}</p>
-                    <p>Available spots: {service.quantity}</p>
+                    <p>Available quantity: {service.quantity}</p>
                     <p>Price: {service.price} €</p>
                     {isServiceOffered ? (
                         <>

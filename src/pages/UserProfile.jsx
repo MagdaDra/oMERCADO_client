@@ -10,7 +10,7 @@ const servicesService = new ServicesAPIService();
 const UserProfile = () => {
 	const [servicesOffered, setServicesOffered] = useState([]);
 	const [servicesBought, setServicesBought] = useState([]);
-	//const [servicesSold, setServicesSold] = useState([])
+	const [servicesSold, setServicesSold] = useState([])
 	const [userDetails, setUserDetails] = useState('');
 
 
@@ -21,9 +21,9 @@ const UserProfile = () => {
 			const response = await userService.getUserById(user._id);
 
 			setUserDetails(response.data);
-			console.log('User data: ',response.data)
 			setServicesOffered(response.data.servicesOffered);
 			setServicesBought(response.data.servicesBought);
+			setServicesSold(response.data.servicesSold);
 
 		} catch (error) {
 			console.error('Failed to fetch user details in UserProfile', error);
@@ -78,6 +78,22 @@ const UserProfile = () => {
 						</button>
 					</div>
 				);
+			})}
+
+			<h1>Services Sold</h1>
+			{servicesSold.map((service) => {
+				return (
+					<div key={service._id}>
+					<Link to={`/services/${service._id}`}>
+							<h2>{service.serviceName}</h2>
+							<img
+								className='service-img'
+								src={service.img}></img>
+						</Link>
+						<p>Price: {service.price} € </p>
+						<p>Quantity: {service.quantity} </p>					
+					</div>
+				)
 			})}
 			
 			<h1>Services Bought</h1>
