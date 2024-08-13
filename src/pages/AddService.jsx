@@ -15,7 +15,6 @@ const AddService = () => {
 	const [img, setImg] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [category, setCategory] = useState([]);
-	const [isActive, setIsActive] = useState(true);
 
 	const { user } = useContext(AuthContext);
 
@@ -43,15 +42,7 @@ const AddService = () => {
 	};
 
 	const handleQuantity = (e) => {
-		const value = Number(e.target.value);
-
-		if (value > 0) {
-			setQuantity(value);
-			setIsActive(true);
-		} else {
-			setQuantity(0);
-			setIsActive(false);
-		}
+		setQuantity(e.target.value);
 	};
 
 	const handleDate = (e) => {
@@ -101,7 +92,6 @@ const AddService = () => {
 			img,
 			category,
 			createdBy: user._id,
-			isActive,
 		};
 		try {
 			await servicesService.createService(requestBody);

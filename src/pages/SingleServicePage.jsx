@@ -67,7 +67,7 @@ const SingleServicePage = () => {
             {!service && <h3>No service found</h3>}
 
             {service && (
-                <div>
+                <div className='single-service'>
                     <h2>{service.serviceName}</h2>
                     <img
                         className='service-img'
