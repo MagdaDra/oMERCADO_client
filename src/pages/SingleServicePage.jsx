@@ -5,6 +5,7 @@ import { AuthContext } from '../context/auth.context';
 import { CartContext } from '../context/cart.contex';
 import UserAPIService from '../services/user.api';
 
+
 const userService = new UserAPIService();
 const servicesService = new ServicesAPIService();
 

@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/cart.contex';
 import ServicesAPIService from '../services/services.api';
+import AddSubstractButton from '../components/AddSubstractButton';
 
 const servicesService = new ServicesAPIService();
 
@@ -74,15 +75,7 @@ const Cart = () => {
 								<p>{item.serviceName}</p>
 								<p>Unit price: {item.price} €</p>
 
-                <div className='add-substr-button'>
-                  <button onClick={() => (serviceInCart.quantity - 1)}>
-                    -
-                  </button>
-                  <p>{serviceInCart.quantity}</p>
-                  <button onClick={() => (serviceInCart.quantity + 1)}>
-                    +
-                  </button>
-                </div>
+                <div>{AddSubstractButton(serviceInCart.quantity)}</div>
 
 
 								{/* <p>Quantity: {serviceInCart.quantity} </p> */}
