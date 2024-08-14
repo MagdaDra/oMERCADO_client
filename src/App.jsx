@@ -11,6 +11,7 @@ import AddService from './pages/AddService';
 import SingleServicePage from './pages/SingleServicePage';
 import EditService from './pages/EditService';
 import Cart from './pages/Cart';
+import Payment from './pages/Payment';
 import './App.css';
 
 function App() {
@@ -78,6 +79,11 @@ function App() {
 				<Route 
 					path='/cart'
 					element={<Cart/>}
+				/>
+
+				<Route
+					path='/payment'
+					element={<Payment/>}
 				/>
 
 

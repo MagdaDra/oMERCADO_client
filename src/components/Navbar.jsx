@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { AuthContext } from '../context/auth.context';
-import {ShoppingCartSimple} from 'phosphor-react'
+import { CartContext } from '../context/cart.contex';
+import { ShoppingCartSimple } from 'phosphor-react';
 
 function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);
-	const [cartTotal, setCartTotal] = useState(0)
+	const { cartTotalQuantity } = useContext(CartContext);
+	
 
 	console.log(user);
 
@@ -53,13 +55,15 @@ function Navbar() {
 				)}
 
 				<div className='cart'>
-				<p>{cartTotal}</p>
+					<p>{cartTotalQuantity}</p>
 
-				<Link to='/cart'>
-					<ShoppingCartSimple size={32} color="#ffffff" />
-				</Link>
+					<Link to='/cart'>
+						<ShoppingCartSimple
+							size={32}
+							color='#ffffff'
+						/>
+					</Link>
 				</div>
-				
 			</ul>
 		</nav>
 	);

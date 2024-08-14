@@ -123,3 +123,17 @@ nav li {
   background-color: #dfeef9;
 }
 
+.add-substr-button {
+  display: flex;
+}
+
+.cart-img {
+  width: 50px
+}
+
+.single-cart-line{
+  display: flex;
+  justify-content: space-around;
+  width: 40vw
+}
+

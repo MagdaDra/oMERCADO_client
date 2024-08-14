@@ -1,21 +1,20 @@
-import { createContext, useState, useEffect } from 'react';
-import ServicesAPIService from '../services/services.api';
+import { createContext, useState} from 'react';
 
 const CartContext = createContext();
-const servicesService = new ServicesAPIService();
+
 
 const CartProviderWrapper = ({ children }) => {
 	const [services, setServices] = useState([]); // this is storing serviceId and quantity
-	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
+	const [cartTotalQuantity, setCartTotalQuantity] = useState(0); // this is storing the total items quantity that appears in the navbar
 
     // item has to be an objecty with id and quantity
 	const addToCart = (item) => {
 
-        const foundService = services.findIndex((service) => service._id === item._id)
+        const foundServiceIndex = services.findIndex((service) => service._id === item._id)
         const servicesCopy =[...services];
 
-        if (foundService) {
-            servicesCopy[foundService].quantity+=item.quantity
+        if (foundServiceIndex !== -1) {
+            servicesCopy[foundServiceIndex].quantity+=item.quantity
             setServices(servicesCopy)
         } else {
             servicesCopy.push(item);
@@ -24,21 +23,15 @@ const CartProviderWrapper = ({ children }) => {
 
         // add to local storage
 
-        // reduce items from the drop down
+        // reduce items from the cart
 
-		setCartTotalQuantity((prevCartItems) => {
+		const cartTotal = () => {
+			const sum = servicesCopy.reduce((total, service) => total + service.quantity, 0)
+			setCartTotalQuantity(sum)
+		}
 
+		cartTotal();
 
-			const newCartItems = { ...prevCartItems };
-
-			if (newCartItems[item]) {
-				newCartItems[item] += 1;
-			} else {
-				newCartItems[item] = 1;
-			}
-
-			return newCartItems;
-		});
 	};
 
 	return <CartContext.Provider value={{services, cartTotalQuantity, addToCart}} >{children}</CartContext.Provider>;
