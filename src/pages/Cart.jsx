@@ -2,14 +2,16 @@ import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/cart.contex';
 import ServicesAPIService from '../services/services.api';
-import AddSubstractButton from '../components/AddSubstractButton';
 
 const servicesService = new ServicesAPIService();
 
 const Cart = () => {
-	const { services, addToCart } = useContext(CartContext);
+	const { services } = useContext(CartContext);
 	const [servicesFromAPI, setServicesFromAPI] = useState([]);
+	const [total, setTotal] = useState(0);
+	//const [count, setCount] = useState(0)
 
+	// Getting details of the services stored in the 'services' from cart context as they are only stored as _id and quantity. (To get Img, Name, etc)
 	const getServicesFromAPI = async () => {
 		try {
 			const responses = await Promise.all(
@@ -52,6 +54,34 @@ const Cart = () => {
 		}
 	}, [services]);
 
+	// const AddSubstractButton = (service) => {
+	// 	return (
+	// 		<div className='add-substr-button'>
+	// 			<button onClick={() => (count > 0 ? setCount(count - 1) : setCount(0))}>
+	// 				-
+	// 			</button>
+	// 			<p>{service.quantity}</p>
+	// 			<button onClick={() => (count < service.quantity ? setCount(count + 1): setCount(service.quantity))}>
+	// 				+
+	// 			</button>
+	// 		</div>
+	// 	);
+	// };
+
+	useEffect(() => {
+		const calculateTotal = () => {
+			const totalAmount = servicesFromAPI.reduce((acc, item) => {
+				const serviceInCart = services.find(
+					(service) => service._id === item._id,
+				);
+				return acc + item.price * serviceInCart.quantity;
+			}, 0);
+			setTotal(totalAmount);
+		};
+
+		calculateTotal();
+	}, [servicesFromAPI, services]);
+
 	return (
 		<div>
 			<h1>Cart</h1>
@@ -63,6 +93,7 @@ const Cart = () => {
 						const serviceInCart = services.find(
 							(service) => service._id === item._id,
 						);
+						//setTotal((prevTotal) => prevTotal + item.price * serviceInCart.quantity)
 						return (
 							<div
 								className='single-cart-line'
@@ -75,18 +106,23 @@ const Cart = () => {
 								<p>{item.serviceName}</p>
 								<p>Unit price: {item.price} €</p>
 
-                <div>{AddSubstractButton(serviceInCart.quantity)}</div>
+								<div className='add-substr-button'>
+									{/* <div>
+									<AddSubstractButton service={serviceInCart} />
+								</div> */}
+									<button onClick={() => serviceInCart.quantity - 1}>-</button>
+									<p>{serviceInCart.quantity}</p>
+									<button onClick={() => serviceInCart.quantity + 1}>+</button>
+								</div>
 
-
-								{/* <p>Quantity: {serviceInCart.quantity} </p> */}
-                <p>Total: {item.price * serviceInCart.quantity} €</p>
+								<p>Total: {item.price * serviceInCart.quantity} €</p>
 							</div>
 						);
 					})}
 				</>
 			)}
 
-			<div>Total: €</div>
+			<div>Total: {total} €</div>
 			<Link to={'/payment'}>
 				<button>Payment</button>
 			</Link>

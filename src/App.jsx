@@ -12,6 +12,7 @@ import SingleServicePage from './pages/SingleServicePage';
 import EditService from './pages/EditService';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
+import SuccessPayment from './pages/SuccessPayment';
 import './App.css';
 
 function App() {
@@ -68,25 +69,29 @@ function App() {
 
 				<Route
 					path='/services/:serviceId'
-					element={<SingleServicePage/>}
+					element={<SingleServicePage />}
 				/>
 
-				<Route 
+				<Route
 					path='/services/edit/:serviceId'
-					element={<EditService/>}
+					element={<EditService />}
 				/>
 
-				<Route 
+				<Route
 					path='/cart'
-					element={<Cart/>}
+					element={<Cart />}
 				/>
 
 				<Route
 					path='/payment'
-					element={<Payment/>}
+					element={<Payment />}
 				/>
 
-
+				<Route
+					path='/payment-completed'
+					element={<SuccessPayment />}
+				/>
+				
 			</Routes>
 		</div>
 	);

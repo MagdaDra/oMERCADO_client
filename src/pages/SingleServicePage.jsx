@@ -4,6 +4,7 @@ import ServicesAPIService from '../services/services.api';
 import { AuthContext } from '../context/auth.context';
 import { CartContext } from '../context/cart.contex';
 import UserAPIService from '../services/user.api';
+//import AddSubstractButton from '../components/AddSubstractButton';
 
 
 const userService = new UserAPIService();
@@ -16,7 +17,7 @@ const SingleServicePage = () => {
 	const { user } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const [count, setCount] = useState(0);
-	const { addToCart } = useContext(CartContext);
+	const { addToCart} = useContext(CartContext);
 
 	const getUserDetails = async () => {
 		try {
@@ -84,7 +85,10 @@ const SingleServicePage = () => {
 		);
 	};
 
-	const cartItem={_id: serviceId, quantity: count}
+	const cartItemToAdd={_id: serviceId, quantity: count}
+
+	// const itemInTheCart=services.find((serviceAlreadyInCart) => serviceAlreadyInCart._id === serviceId)
+
 
 	return (
 		<div>
@@ -118,9 +122,10 @@ const SingleServicePage = () => {
 					) : (
 						<>
 							<div>
+								{/* <AddSubstractButton serviceId={serviceId}/> */}
 								<AddSubstractButton />
 							</div>
-							<button onClick={() => addToCart(cartItem)}>Add to cart</button>
+							<button onClick={() => addToCart(cartItemToAdd)}>Add to cart</button>
 						</>
 					)}
 				</div>

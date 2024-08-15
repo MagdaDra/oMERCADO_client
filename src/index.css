@@ -137,3 +137,13 @@ nav li {
   width: 40vw
 }
 
+.payment-form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.payment-button{
+  width: 100px;
+}
+
