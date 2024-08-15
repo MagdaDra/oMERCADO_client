@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import ServicesAPIService from '../services/services.api';
+import Search from '../components/Search';
 
 const servicesService = new ServicesAPIService();
 
 const MainServicesPage = () => {
 	const [services, setServices] = useState([]);
+	const [search, setSearch] = useState('')
 
 	const fetchData = async () => {
 		try {
@@ -22,8 +24,18 @@ const MainServicesPage = () => {
 		fetchData();
 	}, []);
 
+	const handleSearch = value => {
+
+		const servicesAfterSearch = services.filter(service => {
+			return service.serviceName.toLowerCase().includes(value.toLowerCase())
+		});
+		setServices(servicesAfterSearch);
+		setSearch(value);
+	}
+
 	return (
 		<>
+			<Search searchValue={search} searchedService={handleSearch} />
 			<h1>Services</h1>
 			{services.map((service) => {
 				return (
