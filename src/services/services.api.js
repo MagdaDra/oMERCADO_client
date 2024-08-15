@@ -30,24 +30,34 @@ class ServicesAPIService {
 		});
 	}
 
-    editService(serviceId, updatedService) {
-		return axios.put(`${this.baseURL}/api/services/edit/${serviceId}`, updatedService, {
-			headers: {
-				Authorization: `Bearer ${this.authToken}`,
+	editService(serviceId, updatedService) {
+		return axios.put(
+			`${this.baseURL}/api/services/edit/${serviceId}`,
+			updatedService,
+			{
+				headers: {
+					Authorization: `Bearer ${this.authToken}`,
+				},
 			},
-		});
+		);
 	}
 
-    deleteService(serviceId) {
+	deleteService(serviceId) {
 		return axios
-		.delete(`${this.baseURL}/api/services/${serviceId}`, {
-			headers: {
-				Authorization: `Bearer ${this.authToken}`,
-			},
-		})
-		.catch((error) => {
-			console.error('Error deleting the service', error);
-		})
+			.delete(`${this.baseURL}/api/services/${serviceId}`, {
+				headers: {
+					Authorization: `Bearer ${this.authToken}`,
+				},
+			})
+			.catch((error) => {
+				console.error('Error deleting the service', error);
+			});
+	}
+
+	getCartInfo(cart) {
+		return axios.post(`${this.baseURL}/api/cartInfo`, {cart}, {
+			headers: { Authorization: `Bearer ${this.authToken}` },
+		});
 	}
 }
 

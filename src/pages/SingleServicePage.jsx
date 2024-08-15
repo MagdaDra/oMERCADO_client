@@ -125,7 +125,7 @@ const SingleServicePage = () => {
 								{/* <AddSubstractButton serviceId={serviceId}/> */}
 								<AddSubstractButton />
 							</div>
-							<button onClick={() => addToCart(cartItemToAdd)}>Add to cart</button>
+							<button onClick={() => addToCart(cartItemToAdd, service.quantity)}>Add to cart</button>
 						</>
 					)}
 				</div>

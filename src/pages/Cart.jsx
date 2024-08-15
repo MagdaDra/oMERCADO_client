@@ -6,43 +6,17 @@ import ServicesAPIService from '../services/services.api';
 const servicesService = new ServicesAPIService();
 
 const Cart = () => {
-	const { services } = useContext(CartContext);
+	const { services, setTotal, total } = useContext(CartContext);
 	const [servicesFromAPI, setServicesFromAPI] = useState([]);
-	const [total, setTotal] = useState(0);
 	//const [count, setCount] = useState(0)
 
 	// Getting details of the services stored in the 'services' from cart context as they are only stored as _id and quantity. (To get Img, Name, etc)
 	const getServicesFromAPI = async () => {
 		try {
-			const responses = await Promise.all(
-				services.map((service) => servicesService.getServiceById(service._id)),
-			);
+			const response = await servicesService.getCartInfo(services);
+			console.log('Response:', response);
 
-			//The services.map(...) part creates an array of promises. Each promise is an API call to getServiceById with a corresponding _id.
-			//Promise.all(...) waits for all these promises to resolve and returns an array of their results, which is assigned to responses.
-
-			// Data stored inside const responses:
-
-			// [
-			//   {
-			//     data: {
-			//       _id: 'service1',
-			//       name: 'Service 1',
-			//       description: 'Description of Service 1',
-			//       price: 100
-			//     }
-			//   },
-			//   {
-			//     data: {
-			//       _id: 'service2',
-			//       name: 'Service 2',
-			//       description: 'Description of Service 2',
-			//       price: 200
-			//     }
-			//   }]
-
-			const fetchedServices = responses.map((response) => response.data);
-			setServicesFromAPI(fetchedServices);
+			setServicesFromAPI(response.data);
 		} catch (error) {
 			console.error('Error fetching services from API in Cart', error);
 		}
@@ -67,6 +41,24 @@ const Cart = () => {
 	// 		</div>
 	// 	);
 	// };
+
+	/* 	const handleUpdateQuantity = (id, quantity, availableQuantity) => {
+		const foundServiceIndex = servicesCopy.findIndex(
+			(service) => service._id === id,
+		);
+		const tempServices = [...servicesCopy];
+
+		if (
+			tempServices[foundServiceIndex].quantity + quantity >
+			availableQuantity
+		) {
+			return 'This quantity is not available';
+		} else {
+			tempServices[foundServiceIndex].quantity += quantity;
+			setServicesCopy(tempServices);
+		}
+	};
+ */
 
 	useEffect(() => {
 		const calculateTotal = () => {
@@ -110,9 +102,13 @@ const Cart = () => {
 									{/* <div>
 									<AddSubstractButton service={serviceInCart} />
 								</div> */}
-									<button onClick={() => serviceInCart.quantity - 1}>-</button>
+									<button onClick={() => (serviceInCart.quantity -= 1)}>
+										-
+									</button>
 									<p>{serviceInCart.quantity}</p>
-									<button onClick={() => serviceInCart.quantity + 1}>+</button>
+									<button onClick={() => (serviceInCart.quantity += 1)}>
+										+
+									</button>
 								</div>
 
 								<p>Total: {item.price * serviceInCart.quantity} €</p>
