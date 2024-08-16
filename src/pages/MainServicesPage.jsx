@@ -7,6 +7,7 @@ const servicesService = new ServicesAPIService();
 
 const MainServicesPage = () => {
 	const [services, setServices] = useState([]);
+	const [servicesBeforeSearch, setServicesBeforeSearch] = useState([])
 	const [search, setSearch] = useState('')
 
 	const fetchData = async () => {
@@ -14,6 +15,7 @@ const MainServicesPage = () => {
 			const response = await servicesService.getAllServices();
 			console.log('All services: ', response.data);
 			setServices(response.data);
+			setServicesBeforeSearch(response.data)
 		} catch (error) {
 			console.error('Error fetching data of all services in MainServicePage', error);
 		}
@@ -24,13 +26,22 @@ const MainServicesPage = () => {
 		fetchData();
 	}, []);
 
+
 	const handleSearch = value => {
 
-		const servicesAfterSearch = services.filter(service => {
-			return service.serviceName.toLowerCase().includes(value.toLowerCase())
-		});
-		setServices(servicesAfterSearch);
+		
 		setSearch(value);
+		if (value==='') {
+			setServices(servicesBeforeSearch)
+		} else {
+			const servicesAfterSearch = servicesBeforeSearch.filter(service => {
+				return service.serviceName.toLowerCase().includes(value.toLowerCase())
+			});
+		
+			setServices(servicesAfterSearch);
+		}
+		
+		
 	}
 
 	return (

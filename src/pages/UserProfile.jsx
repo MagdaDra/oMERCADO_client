@@ -11,7 +11,7 @@ const UserProfile = () => {
 	const [servicesOffered, setServicesOffered] = useState([]);
 	const [servicesBought, setServicesBought] = useState([]);
 	const [servicesSold, setServicesSold] = useState([])
-	const [userDetails, setUserDetails] = useState('');
+	const [userDetails, setUserDetails] = useState({});
 
 
 	const { user } = useContext(AuthContext);
@@ -49,6 +49,12 @@ const UserProfile = () => {
 		getUserDetails();
 	}, []);
 
+	let typeOfUserString
+
+	if (userDetails.typeOfUser && userDetails.typeOfUser.length > 0) {
+		userDetails.typeOfUser.length === 1 ? typeOfUserString = userDetails.typeOfUser[0] : userDetails.typeOfUser.join(', ')
+	}
+
 
 	return (
 		<>
@@ -56,6 +62,7 @@ const UserProfile = () => {
 			<h1>User details</h1>
 			<p>Name: {userDetails.name}</p>
 			<p>Email: {userDetails.email} </p>
+			<p>Type of account: {typeOfUserString}</p>
 			
 			<h1>Services Offered</h1>
 			{servicesOffered.map((service) => {
