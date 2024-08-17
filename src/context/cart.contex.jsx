@@ -1,52 +1,38 @@
-import { createContext, useState, useEffect, useContext } from 'react';
-import { AuthContext } from './auth.context';
+import { createContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
 const CartProviderWrapper = ({ children }) => {
-	const { user, loading } = useContext(AuthContext);
-
-	// If user is not loaded yet, don't initialize cart context
-	if (loading) {
-		return <div>Loading...</div>
-	}
-
-	// Use userId or guest if not logged in
-	const userId = user ? user._id : 'guest'; 
-
-	// Unique key for each user's cart
-	const localStorageKey = `Cart_${userId}`
-
 	// Total sum to pay in the cart
-	const [totalCartSum, setTotalCartSum] = useState(0); 
+	const [totalCartSum, setTotalCartSum] = useState(0);
 
-	// Load the initial state from localStorage
-	const [cartTotalQuantity, setCartTotalQuantity] = useState(() => {
-		// this is storing the total items quantity that appears in the navbar
-		const storedCartQuantity = localStorage.getItem(`${localStorageKey}_Quantity`);
-		return storedCartQuantity ? JSON.parse(storedCartQuantity) : 0;
-	});
+	const [services, setServices] = useState([]);
+
+	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
+
+	// this is setting the total items quantity that appears in the navbar
+	useEffect(() => {
+		const storedCartQuantity = localStorage.getItem('Cart_Quantity');
+		setCartTotalQuantity(
+			storedCartQuantity ? JSON.parse(storedCartQuantity) : 0,
+		);
+	}, []);
 
 	// Update localStorage whenever number of items in cart changes
 	useEffect(() => {
-		localStorage.setItem(
-			`${localStorageKey}_Quantity`,
-			JSON.stringify(cartTotalQuantity),
-		);
-	}, [cartTotalQuantity, localStorageKey]);
+		localStorage.setItem('Cart_Quantity', JSON.stringify(cartTotalQuantity));
+	}, [cartTotalQuantity]);
 
-	// Load the initial state from localStorage
-	const [services, setServices] = useState(() => {
-		// services is storing serviceId and quantity
-		const storedCart = localStorage.getItem(localStorageKey);
-		return storedCart ? JSON.parse(storedCart) : []; // JSON.parse: the data has to be converted from a JSON string to JavaScript object
-	});
+	// Load the initial cart from localStorage
+	useEffect(() => {
+		const storedCart = localStorage.getItem('Cart');
+		setServices(storedCart ? JSON.parse(storedCart) : []); // JSON.parse: the data has to be converted from a JSON string to JavaScript object
+	}, []);
 
 	// Update localStorage whenever services change
-
 	useEffect(() => {
-		localStorage.setItem(localStorageKey, JSON.stringify(services)); // JSON.stringify: the data has to be converted from a JavaScript object to JSON string
-	}, [services, localStorageKey]);
+		localStorage.setItem('Cart', JSON.stringify(services)); // JSON.stringify: the data has to be converted from a JavaScript object to JSON string
+	}, [services]);
 
 	// item has to be an object with id and quantity
 
@@ -63,6 +49,8 @@ const CartProviderWrapper = ({ children }) => {
 				availableQuantity
 			) {
 				return 'This quantity is not available';
+			} else if (servicesCopy[foundServiceIndex].quantity + item.quantity < 1) {
+				return "Quantity can't be less than 0";
 			} else {
 				servicesCopy[foundServiceIndex].quantity += item.quantity;
 				setServices(servicesCopy);
@@ -72,7 +60,9 @@ const CartProviderWrapper = ({ children }) => {
 			setServices(servicesCopy);
 		}
 
-		// Sum items in the cart
+		// add to local storage
+
+		// reduce items from the cart
 
 		const cartTotal = () => {
 			const sum = servicesCopy.reduce(
@@ -84,7 +74,6 @@ const CartProviderWrapper = ({ children }) => {
 
 		cartTotal();
 	};
-
 
 	return (
 		<CartContext.Provider

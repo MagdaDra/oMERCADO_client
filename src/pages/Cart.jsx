@@ -6,7 +6,8 @@ import ServicesAPIService from '../services/services.api';
 const servicesService = new ServicesAPIService();
 
 const Cart = () => {
-	const { services, totalCartSum, setTotalCartSum } = useContext(CartContext);
+	const { services, totalCartSum, setTotalCartSum, addToCart } =
+		useContext(CartContext);
 	const [servicesFromAPI, setServicesFromAPI] = useState([]);
 	//const [count, setCount] = useState(0)
 
@@ -27,7 +28,6 @@ const Cart = () => {
 			getServicesFromAPI();
 		}
 	}, [services]);
-
 
 	/* 	const handleUpdateQuantity = (id, quantity, availableQuantity) => {
 		const foundServiceIndex = servicesCopy.findIndex(
@@ -86,14 +86,17 @@ const Cart = () => {
 								<p>Unit price: {item.price} €</p>
 
 								<div className='add-substr-button'>
-									{/* <div>
-									<AddSubstractButton service={serviceInCart} />
-								</div> */}
-									<button onClick={() => (serviceInCart.quantity -= 1)}>
+									<button
+										onClick={() =>
+											addToCart({ _id: item._id, quantity: -1 }, item.quantity)
+										}>
 										-
 									</button>
 									<p>{serviceInCart.quantity}</p>
-									<button onClick={() => (serviceInCart.quantity += 1)}>
+									<button
+										onClick={() =>
+											addToCart({ _id: item._id, quantity: 1 }, item.quantity)
+										}>
 										+
 									</button>
 								</div>

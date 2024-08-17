@@ -47,9 +47,6 @@ function AuthProviderWrapper(props) {
 
 	const logout = () => {
 		localStorage.removeItem('authToken');
-		const userId = user ? user._id : 'guest';
-		localStorage.removeItem(`Cart_${userId}`); // Clear user-specific cart
-		localStorage.removeItem(`Cart_${userId}_Quantity`); // Clear quantity from the cart
 		authenticateUser();
 	};
 
