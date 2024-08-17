@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/cart.contex";
 
 function Payment() {
+
+  const {totalCartSum} = useContext(CartContext);
 
   const navigate = useNavigate();
 
@@ -17,7 +21,7 @@ function Payment() {
 
     <div className='summary'>
       <h3>Summary</h3>
-      <p>Total: </p>
+      <p>Total: {totalCartSum} €</p>
     </div>
     
     <div className='payment-form'>

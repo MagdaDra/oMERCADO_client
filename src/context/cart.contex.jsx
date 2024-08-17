@@ -6,33 +6,38 @@ const CartProviderWrapper = ({ children }) => {
 	// Total sum to pay in the cart
 	const [totalCartSum, setTotalCartSum] = useState(0);
 
-	// All services in the cart stored as serviceId and quantity 
+	// All services in the cart stored as serviceId and quantity
 	const [services, setServices] = useState([]);
+	const [loadedCart, setLoadedCart] = useState(false);
 
 	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
 
 	// this is setting the total items quantity that appears in the navbar
 	useEffect(() => {
 		const storedCartQuantity = localStorage.getItem('Cart_Quantity');
-		setCartTotalQuantity(
-			storedCartQuantity ? JSON.parse(storedCartQuantity) : 0,
-		);
+		setCartTotalQuantity(storedCartQuantity ? +storedCartQuantity : 0);
+		const storedCart = localStorage.getItem('Cart');
+		console.log(storedCart);
+		setServices(storedCart ? JSON.parse(storedCart) : []); // JSON.parse: the data has to be converted from a JSON string to JavaScript object
+		setLoadedCart(true);
 	}, []);
 
 	// Update localStorage whenever number of items in cart changes
 	useEffect(() => {
-		localStorage.setItem('Cart_Quantity', JSON.stringify(cartTotalQuantity));
+		if (loadedCart) {
+			localStorage.setItem('Cart_Quantity', JSON.stringify(cartTotalQuantity));
+		}
 	}, [cartTotalQuantity]);
 
 	// Load the initial cart from localStorage
-	useEffect(() => {
-		const storedCart = localStorage.getItem('Cart');
-		setServices(storedCart ? JSON.parse(storedCart) : []); // JSON.parse: the data has to be converted from a JSON string to JavaScript object
-	}, []);
+	/* useEffect(() => {
+	}, []); */
 
 	// Update localStorage whenever services change
 	useEffect(() => {
-		localStorage.setItem('Cart', JSON.stringify(services)); // JSON.stringify: the data has to be converted from a JavaScript object to JSON string
+		if (loadedCart) {
+			localStorage.setItem('Cart', JSON.stringify(services)); // JSON.stringify: the data has to be converted from a JavaScript object to JSON string
+		}
 	}, [services]);
 
 	// item has to be an object with id and quantity
@@ -61,10 +66,6 @@ const CartProviderWrapper = ({ children }) => {
 			setServices(servicesCopy);
 		}
 
-		// add to local storage
-
-		// reduce items from the cart
-
 		const cartTotal = () => {
 			const sum = servicesCopy.reduce(
 				(total, service) => total + service.quantity,
@@ -77,8 +78,8 @@ const CartProviderWrapper = ({ children }) => {
 	};
 
 	const removeFromCart = (item) => {
-		const servicesCopy = services.filter(service => service._id !== item._id)
-		setServices(servicesCopy)
+		const servicesCopy = services.filter((service) => service._id !== item._id);
+		setServices(servicesCopy);
 
 		const cartTotal = () => {
 			const sum = servicesCopy.reduce(
@@ -89,7 +90,7 @@ const CartProviderWrapper = ({ children }) => {
 		};
 
 		cartTotal();
-	}
+	};
 
 	return (
 		<CartContext.Provider
@@ -99,7 +100,7 @@ const CartProviderWrapper = ({ children }) => {
 				addToCart,
 				totalCartSum,
 				setTotalCartSum,
-				removeFromCart
+				removeFromCart,
 			}}>
 			{children}
 		</CartContext.Provider>
