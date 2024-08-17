@@ -20,6 +20,9 @@ const CartProviderWrapper = ({ children }) => {
 		console.log(storedCart);
 		setServices(storedCart ? JSON.parse(storedCart) : []); // JSON.parse: the data has to be converted from a JSON string to JavaScript object
 		setLoadedCart(true);
+		const totalAmount = localStorage.getItem('Cart_Total')
+		setTotalCartSum(totalAmount ? JSON.parse(totalAmount) : 0)
+		
 	}, []);
 
 	// Update localStorage whenever number of items in cart changes

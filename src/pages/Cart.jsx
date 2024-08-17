@@ -40,6 +40,7 @@ const Cart = () => {
 				return acc + item.price * serviceInCart.quantity;}
 			}, 0);
 			setTotalCartSum(totalAmount);
+			localStorage.setItem('Cart_Total', JSON.stringify(totalAmount))
 		};
 
 		calculateTotal();
@@ -100,8 +101,8 @@ const Cart = () => {
 			)}
 
 			<div>Total: {totalCartSum} €</div>
-			<Link to={'/payment'}>
-				<button>Payment</button>
+			<Link to={'/checkout'}>
+				<button>Checkout</button>
 			</Link>
 		</div>
 	);

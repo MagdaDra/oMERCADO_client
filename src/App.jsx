@@ -11,7 +11,7 @@ import AddService from './pages/AddService';
 import SingleServicePage from './pages/SingleServicePage';
 import EditService from './pages/EditService';
 import Cart from './pages/Cart';
-import Payment from './pages/Payment';
+import Checkout from './pages/Checkout';
 import SuccessPayment from './pages/SuccessPayment';
 import './App.css';
 
@@ -83,8 +83,8 @@ function App() {
 				/>
 
 				<Route
-					path='/payment'
-					element={<Payment />}
+					path='/checkout'
+					element={<Checkout />}
 				/>
 
 				<Route
