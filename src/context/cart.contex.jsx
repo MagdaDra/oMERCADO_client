@@ -6,6 +6,7 @@ const CartProviderWrapper = ({ children }) => {
 	// Total sum to pay in the cart
 	const [totalCartSum, setTotalCartSum] = useState(0);
 
+	// All services in the cart stored as serviceId and quantity 
 	const [services, setServices] = useState([]);
 
 	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
@@ -75,6 +76,21 @@ const CartProviderWrapper = ({ children }) => {
 		cartTotal();
 	};
 
+	const removeFromCart = (item) => {
+		const servicesCopy = services.filter(service => service._id !== item._id)
+		setServices(servicesCopy)
+
+		const cartTotal = () => {
+			const sum = servicesCopy.reduce(
+				(total, service) => total + service.quantity,
+				0,
+			);
+			setCartTotalQuantity(sum);
+		};
+
+		cartTotal();
+	}
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -83,6 +99,7 @@ const CartProviderWrapper = ({ children }) => {
 				addToCart,
 				totalCartSum,
 				setTotalCartSum,
+				removeFromCart
 			}}>
 			{children}
 		</CartContext.Provider>
