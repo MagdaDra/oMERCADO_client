@@ -19,7 +19,7 @@ const AddService = () => {
 	const { user } = useContext(AuthContext);
 
 	const categories = [
-		{ id: 1, label: 'IT' },
+		{ id: 1, label: 'Technology' },
 		{ id: 2, label: 'Art' },
 		{ id: 3, label: 'Design' },
 		{ id: 4, label: 'Sport' },

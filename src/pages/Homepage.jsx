@@ -1,8 +1,16 @@
 function Homepage() {
 	return (
 		<div>
-			<h1>Homepage</h1>
+		
+			<div>Art</div>
+			<div>Design</div>
+			<div>Food</div>
+			<div>Sport</div>
+			<div>Technology</div>
+			<div>Travel</div>
+			
 		</div>
+
 	);
 }
 

@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import Homepage from './pages/Homepage';
-import Navbar from './components/Navbar';
 import SignupPage from './pages/Auth/SignupPage';
 import LoginPage from './pages/Auth/LoginPage';
 import MainServicesPage from './pages/MainServicesPage';
@@ -13,13 +12,12 @@ import EditService from './pages/EditService';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import SuccessPayment from './pages/SuccessPayment';
+import Layout from './components/Layout';
 import './App.css';
 
 function App() {
 	return (
 		<div>
-			<Navbar />
-
 			<Routes>
 				<Route
 					path='/'
@@ -28,14 +26,21 @@ function App() {
 
 				<Route
 					path='/main'
-					element={<MainServicesPage />}
+					element={
+						<Layout>
+							<MainServicesPage />
+						</Layout>
+					}
 				/>
 
 				<Route
 					path='/signup'
 					element={
 						<Anon>
-							<SignupPage />
+							<Layout>
+								{' '}
+								<SignupPage />{' '}
+							</Layout>
 						</Anon>
 					}
 				/>
@@ -44,7 +49,10 @@ function App() {
 					path='/login'
 					element={
 						<Anon>
-							<LoginPage />
+							<Layout>
+								{' '}
+								<LoginPage />{' '}
+							</Layout>
 						</Anon>
 					}
 				/>
@@ -53,7 +61,9 @@ function App() {
 					path='/user-profile'
 					element={
 						<Private>
-							<UserProfile />
+							<Layout>
+								<UserProfile />
+							</Layout>
 						</Private>
 					}
 				/>
@@ -62,36 +72,62 @@ function App() {
 					path='/add-service'
 					element={
 						<Private>
-							<AddService />
+							<Layout>
+								<AddService />
+							</Layout>
 						</Private>
 					}
 				/>
 
 				<Route
 					path='/services/:serviceId'
-					element={<SingleServicePage />}
+					element={
+						<Layout>
+							{' '}
+							<SingleServicePage />{' '}
+						</Layout>
+					}
 				/>
 
 				<Route
 					path='/services/edit/:serviceId'
-					element={<EditService />}
+					element={
+						<Layout>
+							{' '}
+							<EditService />{' '}
+						</Layout>
+					}
 				/>
 
 				<Route
 					path='/cart'
-					element={<Cart />}
+					element={
+						<Layout>
+							{' '}
+							<Cart />{' '}
+						</Layout>
+					}
 				/>
 
 				<Route
 					path='/checkout'
-					element={<Checkout />}
+					element={
+						<Layout>
+							{' '}
+							<Checkout />{' '}
+						</Layout>
+					}
 				/>
 
 				<Route
 					path='/payment-completed'
-					element={<SuccessPayment />}
+					element={
+						<Layout>
+							{' '}
+							<SuccessPayment />{' '}
+						</Layout>
+					}
 				/>
-				
 			</Routes>
 		</div>
 	);
