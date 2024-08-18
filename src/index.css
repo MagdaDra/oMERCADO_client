@@ -123,9 +123,13 @@ nav li {
   background-color: #dfeef9;
 }
 
+/*  Add / Substr button */
+
 .add-substr-button {
   display: flex;
 }
+
+/*  Cart */
 
 .cart-img {
   width: 50px
@@ -137,6 +141,8 @@ nav li {
   width: 40vw
 }
 
+/* Checkout */
+
 .payment-form{
   display: flex;
   flex-direction: column;
@@ -145,5 +151,55 @@ nav li {
 
 .payment-button{
   width: 100px;
+}
+
+/* Homepage */
+
+@media screen and (max-width: 768px) {
+  .category-button {
+    border: 1px solid black;
+    width: 80vw;
+    height: 30vw;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vw;
+    font-family: sans-serif
+  }
+
+  .homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 250vw;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .category-button {
+    border: 1px solid black;
+    width: 20vw;
+    height: 10vw;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    font-family: sans-serif
+  }
+
+  .homepage {
+    margin: 0 auto;
+    margin-top: 15vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 25vw;
+    width: 80vw
+    
+  }
 }
 

@@ -1,13 +1,14 @@
+
 function Homepage() {
 	return (
-		<div>
-		
-			<div>Art</div>
-			<div>Design</div>
-			<div>Food</div>
-			<div>Sport</div>
-			<div>Technology</div>
-			<div>Travel</div>
+		<div className='homepage'>
+
+			<div className='category-button'>Art</div>
+			<div className='category-button'>Design</div>
+			<div className='category-button'>Food</div>
+			<div className='category-button'>Sport</div>
+			<div className='category-button'>Technology</div>
+			<div className='category-button'>Travel</div>
 			
 		</div>
 
