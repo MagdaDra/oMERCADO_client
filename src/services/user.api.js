@@ -14,6 +14,7 @@ class UserAPIService {
 		});
 	}
 
+
 	editUser(userId) {
 		return axios.put(`${this.baseURL}/api/user/${userId}`, {
 			headers: {

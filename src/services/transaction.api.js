@@ -13,6 +13,14 @@ class TransactionAPIService {
 			},
 		});
 	}
+
+	getTransaction(transactionId) {
+		return axios.get(`${this.baseURL}/api/transaction/${transactionId}`, {
+			headers: {
+				Authorization: `Bearer ${this.authToken}`,
+			},
+		})
+	}
 }
 
 export default TransactionAPIService;

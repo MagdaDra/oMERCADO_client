@@ -3,15 +3,19 @@ import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import UserAPIService from '../services/user.api';
 import ServicesAPIService from '../services/services.api';
+import TransactionAPIService from '../services/transaction.api';
 
 const userService = new UserAPIService();
 const servicesService = new ServicesAPIService();
+const transactionService = new TransactionAPIService();
 
 const UserProfile = () => {
 	const [servicesOffered, setServicesOffered] = useState([]);
 	const [servicesBought, setServicesBought] = useState([]);
+	const [userServicesBoughtByTransactionId, setServicesBoughtByTransactionId] = useState([]);
 	const [servicesSold, setServicesSold] = useState([])
 	const [userDetails, setUserDetails] = useState({});
+	const [loading, setLoading] = useState(true)
 
 
 	const { user } = useContext(AuthContext);
@@ -22,13 +26,46 @@ const UserProfile = () => {
 
 			setUserDetails(response.data);
 			setServicesOffered(response.data.servicesOffered);
-			setServicesBought(response.data.servicesBought);
+			setServicesBoughtByTransactionId(response.data.servicesBought);
 			setServicesSold(response.data.servicesSold);
+			setLoading(false)
+			console.log('Transactions after loading data: ',response.data.servicesBought)
 
 		} catch (error) {
 			console.error('Failed to fetch user details in UserProfile', error);
 		}
 	};
+
+	const getTransactionDetails = async () => {
+		try {
+
+			// Fetch transaction details for each transaction ID in parallel
+			const transactionPromises = userServicesBoughtByTransactionId.map((transactionId) => transactionService.getTransaction(transactionId))
+
+			// Wait for all promises to resolve
+			const transactionResponses = await Promise.all(transactionPromises);
+
+			// Extract the data from each response
+			const servicesBoughtData = transactionResponses.map(response => response.data)
+
+			console.log('servicesBoughtData', servicesBoughtData)
+
+			// Flatten the results if necessary and update the state
+			setServicesBought(servicesBoughtData);
+
+
+		} catch (error) {
+			console.error('Error fetching transaction details in UserProfile: ', error)
+		}
+	}
+
+	useEffect(() => {
+		if (!loading && userServicesBoughtByTransactionId.length > 0) {
+			getTransactionDetails
+		}
+	}, [userServicesBoughtByTransactionId])
+
+
 
 
 	const handleDelete = async (serviceId) => {
@@ -44,6 +81,8 @@ const UserProfile = () => {
 			console.error('Failed to delete the service from UserProfile', error)
 		}
 	}
+
+
 
 	useEffect(() => {
 		getUserDetails();
@@ -90,13 +129,13 @@ const UserProfile = () => {
 			<h1>Services Sold</h1>
 			{servicesSold.map((service) => {
 				return (
-					<div key={service._id}>
+					<div key={servicesSold.indexOf(service)}>
 					<Link to={`/services/${service._id}`}>
 							<h2>{service.serviceName}</h2>
 							<img
 								className='service-img'
 								src={service.img}></img>
-						</Link>
+						</Link>				
 						<p>Price: {service.price} € </p>
 						<p>Quantity: {service.quantity} </p>					
 					</div>
@@ -106,15 +145,13 @@ const UserProfile = () => {
 			<h1>Services Bought</h1>
 			{servicesBought.map((service) => {
 				return (
-					<div key={service._id}>
+					<div key={servicesBought.indexOf(service)}>
 					<Link to={`/services/${service._id}`}>
 							<h2>{service.serviceName}</h2>
 							<img
 								className='service-img'
 								src={service.img}></img>
-						</Link>
-						<p>Price: {service.price} € </p>
-						<p>Quantity: {service.quantity} </p>					
+						</Link>				
 					</div>
 				)
 			})}

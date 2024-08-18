@@ -26,8 +26,12 @@ function Checkout() {
 				requestBody,
 			);
 			console.log(newTransaction);
+			localStorage.removeItem('Cart')
+			localStorage.removeItem('Cart_Quantity')
+			localStorage.removeItem('Cart_Total')
 			navigate('/payment-completed');
-			console.log('here');
+			navigate(0)
+			
 		} catch (error) {
 			console.error('Error when creating transaction', error);
 		}
