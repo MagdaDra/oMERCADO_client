@@ -155,6 +155,9 @@ nav li {
 
 /* Homepage */
 
+
+
+
 @media screen and (max-width: 768px) {
   .category-button {
     border: 1px solid black;
@@ -191,6 +194,7 @@ nav li {
   }
 
   .homepage {
+    background-color: white;
     margin: 0 auto;
     margin-top: 15vw;
     display: flex;

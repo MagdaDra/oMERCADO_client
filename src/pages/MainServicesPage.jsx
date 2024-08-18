@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import ServicesAPIService from '../services/services.api';
 import Search from '../components/Search';
@@ -9,13 +9,22 @@ const MainServicesPage = () => {
 	const [services, setServices] = useState([]);
 	const [servicesBeforeSearch, setServicesBeforeSearch] = useState([])
 	const [search, setSearch] = useState('')
+	const location = useLocation()
+	const {category} = location.state || {}
 
 	const fetchData = async () => {
 		try {
 			const response = await servicesService.getAllServices();
 			console.log('All services: ', response.data);
-			setServices(response.data);
-			setServicesBeforeSearch(response.data)
+
+			// Filter services based on the received category (if there is a category!)
+			const filteredServices = category
+				? response.data.filter((service) => service.category.includes(category))
+				: response.data;
+		
+				setServices(filteredServices);
+				setServicesBeforeSearch(filteredServices);
+			
 		} catch (error) {
 			console.error('Error fetching data of all services in MainServicePage', error);
 		}
@@ -48,7 +57,9 @@ const MainServicesPage = () => {
 		<>
 			<Search searchValue={search} searchedService={handleSearch} />
 			<h1>Services</h1>
-			{services.map((service) => {
+			{services.length === 0 ? (
+				<p>No services found</p>
+			) : (services.map((service) => {
 				return (
 					<div key={service._id}>
 						<Link to={`/services/${service._id}`}>
@@ -58,7 +69,7 @@ const MainServicesPage = () => {
 						<p>Price: {service.price} € </p>
 					</div>
 				);
-			})}
+			}))}
 		</>
 	);
 };

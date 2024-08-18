@@ -1,15 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext} from 'react';
 import { AuthContext } from '../context/auth.context';
 import { CartContext } from '../context/cart.contex';
 import { ShoppingCartSimple } from 'phosphor-react';
 
+
 function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);
 	const { cartTotalQuantity } = useContext(CartContext);
+	const navigate = useNavigate()
 	
-
-	console.log(user);
+	const handleDiscoverServices = () => {
+		// Clear the category state, navigate and refresh
+		navigate('/main', {state: {category: ''}})
+		navigate(0)
+	}
 
 	return (
 		<nav className='Navbar'>
@@ -22,9 +27,9 @@ function Navbar() {
 					/>
 				)}
 
-				<Link to='/main'>
-					<button>Discover services</button>
-				</Link>
+				
+				<button onClick={handleDiscoverServices}>Discover services</button>
+				
 
 				{!loading && user && (
 					<>
