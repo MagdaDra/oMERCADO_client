@@ -15,7 +15,7 @@ function Homepage() {
 
 		<div className='homepage-header'>
 			<h1 className='title'><span className='o'>o</span>MERCADO</h1>
-			{/* <p className='header-description'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit molestias est deserunt quis hic incidunt ipsa debitis vero laboriosam, at modi error libero repellendus aliquam. Corporis ullam fuga ipsam vero.</p> */}
+			<p className='header-description'>Welcome to the ultimate marketplace for buying and selling professional services. Simple, secure, and efficient. <br/> <br/> Join our community today and experience the future of service exchange.</p>
 		</div>
 
 		<div className='homepage'>
