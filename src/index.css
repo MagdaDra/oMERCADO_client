@@ -297,7 +297,9 @@ nav li {
 
   .header-description{
     color: white;
-    width: 40vw
+    width: 80vw;
+    margin: 0 auto;
+    line-height: 30px;
   }
 
   .homepage-header {
