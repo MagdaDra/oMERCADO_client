@@ -21,7 +21,7 @@ function Homepage() {
 					</p>
 
 					<Link to='/main'>
-						<button className='browse-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+						<button className='browse-button flex text-white font-bold text-lg items-center rounded-full justify-center p-2 w-32 border border-[#f5f581] hover:bg-gradient-to-r from-violet-600 to-indigo-600 transition-all duration-75 ease-in-out cursor-pointer'>
 							Browse all
 						</button>
 					</Link>
