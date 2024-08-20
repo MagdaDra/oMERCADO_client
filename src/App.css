@@ -1,243 +1,242 @@
 
 .service-img {
-    width: 30vw
+	width: 30vw;
 }
 
 /* ----------------- Homepage ---------------- */
 
-
-
 /* ----------------- Mobile ---------------- */
 
-
 @media screen and (max-width: 768px) {
-    .category-button {
-      border: 10px solid black;
-      width: 80vw;
-      height: 30vw;
-      
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2vw;
-      font-family: sans-serif;
-      font-weight: 900;
-      color: white;
-      font-weight: 400;
+	.homepage-header {
+		padding-left: 10vw;
+	}
+
+	.title {
+		color: white;
+		padding-left: 1.5vw;
+	}
+
+	.o {
+		color: rgb(245, 245, 129);
+	}
+
+	.header-description {
+		color: white;
+		width: 80%;
+		line-height: 30px;
+		font-weight: 100;
+		margin-bottom: 20px;
+	}
+
+	.homepage {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 250vw;
+	}
+
+	.category-button {
+		border: 10px solid black;
+		width: 80vw;
+		height: 30vw;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2vw;
+		font-family: sans-serif;
+		font-weight: 900;
+		color: white;
+		font-weight: 400;
+	}
+
+	.art-button {
+		background-image: url('../src/assets/IMG_6367.JPG');
+		background-repeat: no-repeat;
+		background-position: center;
+		font-size: 70px;
+	}
+
+	.design-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.design-text {
+		background-color: rgb(0, 0, 0);
+		width: 20vw;
+		height: 20vw;
+		border-radius: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 50px;
+	}
+	.food-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.food-text {
+		background-image: url('../src/assets/IMG_6389.PNG');
+		background-size: cover;
+		width: 32vw;
+		height: 32vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 50px;
+	}
+
+	.sport-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.sport-text {
+		background-color: rgb(0, 0, 0);
+		width: 70vw;
+		height: 22vw;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 50px;
+	}
+
+	.technology-button {
+		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: white;
+		font-size: 50px;
+	}
+}
+
+.travel-button {
+	background-image: url('../src/assets/IMG_6370.JPG');
+	background-size: cover;
+	font-size: 50px;
+}
+/* ----------------- Desktop ---------------- */
+
+@media screen and (min-width: 769px) {
+	.homepage-header {
+		background-color: black;
+		height: 20vw;
+	}
+	.title {
+		color: white;
+		padding-left: 10vw;
+		margin-bottom: 5vw;
+	}
+
+	.o {
+		color: rgb(245, 245, 129);
+	}
+
+	.header-description {
+		color: white;
+		line-height: 30px;
+	}
+
+    .browse-button {
+        margin-left: 10vw;
     }
-  
-    .homepage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 250vw;
-    }
-  
-    .title {
-      color: white;
-      padding-left: 1.5vw;
-    }
-  
-    .o{
-      color: rgb(245, 245, 129)
-    }
-  
-    .header-description{
-      color: white;
-      width: 80%;
-      line-height: 30px;
-      font-weight: 100;
-      margin: 0 auto;
-      margin-bottom: 20px;
-    }
-  
-    .art-button{
-      background-image: url('../src/assets/IMG_6367.JPG');
-      background-repeat: no-repeat;
-      background-position: center;
-      font-size: 70px;
-    }
-  
-  
-    .design-button {
-      background-color: rgb(245, 245, 129)
-    }
-  
-    .design-text {
-      background-color: rgb(0, 0, 0);
-      width: 20vw;
-      height: 20vw;
-      border-radius: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 50px;
-    }
-    .food-button {
-      background-color:  rgb(245, 245, 129)
-    }
-  
-    .food-text {
-      background-image: url('../src/assets/IMG_6389.PNG');
-      background-size: cover;
-      width: 32vw;
-      height: 32vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 50px;
-    }
-    
-    .sport-button {
-      background-color:  rgb(245, 245, 129)
-    }
-  
-    .sport-text {
-      background-color: rgb(0, 0, 0);
-      width: 70vw;
-      height: 22vw;
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 50px;
-    }
-  
-    
-    .technology-button {
-      background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: white;
-      font-size: 50px;
-    }
-  }
-  
-    .travel-button {
-      background-image: url('../src/assets/IMG_6370.JPG');
-      background-size: cover;
-      font-size: 50px
-      
-    }
-  /* ----------------- Desktop ---------------- */
-  
-  @media screen and (min-width: 769px) {
-    .category-button {
-      width: 25vw;
-      height: 25vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2vw;
-      font-family: sans-serif;
-      color: white;
-      
-    }
-  
-    .title {
-      color: white;
-      padding-left: 1.5vw;
-    }
-  
-    .o{
-      color: rgb(245, 245, 129)
-    }
-  
-    .header-description{
-      color: white;
-      width: 80vw;
-      margin: 0 auto;
-      line-height: 30px;
-    }
-  
-    .homepage-header {
-      background-color: black;
-      height: 20vw;
-      
-    }
-  
-    .homepage {
-      margin: 0 auto;
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      width: 80vw
-      
-    }
-    .art-button{
-      background-image: url('../src/assets/IMG_6367.JPG');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  
-    .art-text {
-      font-size: 70px;
-    }
-  
-    .design-button {
-      background-color: rgb(245, 245, 129)
-    }
-  
-    .design-text {
-      background-color:black;
-      border-radius:100px;
-      width: 13vw;
-      height: 13vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 40px;
-    }
-  
-    .travel-button {
-      background-color: rgb(245, 245, 129)
-    }
-  
-    .sport-button {
-      background-color:  rgb(245, 245, 129)
-    }
-  
-    .sport-text {
-      background-color: rgb(0, 0, 0);
-      width: 22vw;
-      height: 22vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 70px;
-    }
-  
-    .food-button {
-      /* background-image: url('../src/assets/IMG_6375.JPG'); */
-      background-color:  rgb(245, 245, 129)
-    }
-  
-    .food-text {
-      background-image: url('../src/assets/IMG_6389.PNG');
-      background-size: cover;
-      width: 25vw;
-      height: 25vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 70px;
-    }
-    
-    .technology-button {
-      background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: white;
-      font-size: 38px;
-    }
-  
-    .travel-button {
-      background-image: url('../src/assets/IMG_6370.JPG');
-      background-size: cover;
-      font-size: 70px
-      
-    }
-  }
-  
-  
+
+	.description-and-button {
+        display: flex;
+        width: 80vw;
+        margin: 0 auto
+	}
+
+	.category-button {
+		width: 25vw;
+		height: 25vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2vw;
+		font-family: sans-serif;
+		color: white;
+	}
+
+	.homepage {
+		margin: 0 auto;
+		margin-top: 20px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 80vw;
+	}
+	.art-button {
+		background-image: url('../src/assets/IMG_6367.JPG');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.art-text {
+		font-size: 70px;
+	}
+
+	.design-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.design-text {
+		background-color: black;
+		border-radius: 100px;
+		width: 13vw;
+		height: 13vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 40px;
+	}
+
+	.travel-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.sport-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.sport-text {
+		background-color: rgb(0, 0, 0);
+		width: 22vw;
+		height: 22vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 70px;
+	}
+
+	.food-button {
+		/* background-image: url('../src/assets/IMG_6375.JPG'); */
+		background-color: rgb(245, 245, 129);
+	}
+
+	.food-text {
+		background-image: url('../src/assets/IMG_6389.PNG');
+		background-size: cover;
+		width: 25vw;
+		height: 25vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 70px;
+	}
+
+	.technology-button {
+		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: white;
+		font-size: 38px;
+	}
+
+	.travel-button {
+		background-image: url('../src/assets/IMG_6370.JPG');
+		background-size: cover;
+		font-size: 70px;
+	}
+}
