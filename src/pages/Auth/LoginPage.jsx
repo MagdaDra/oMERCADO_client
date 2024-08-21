@@ -32,7 +32,7 @@ function LoginPage() {
 			// Use the same token to verify the user
 			authenticateUser();
 
-			navigate('/');
+			navigate('/main');
 
 		} catch (error) {
 			setErrorMessage(error.response.data.message);

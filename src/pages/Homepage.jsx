@@ -25,7 +25,7 @@ function Homepage() {
 					{!loading && !user && (
 						<div className='auth-buttons-header'>
 							<Link to='/signup'>
-								<button className='flex text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
+								<button className='flex text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white '>
 									Signup
 								</button>
 							</Link>
