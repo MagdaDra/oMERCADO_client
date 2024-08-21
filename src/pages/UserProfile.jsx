@@ -26,6 +26,7 @@ const UserProfile = () => {
 			setUserDetails(response.data);
 			setServicesOffered(response.data.servicesOffered);
 			setServicesBought(response.data.servicesBought);
+			console.log(response.data.servicesBought)
 			setServicesSold(response.data.servicesSold);
 			console.log('Transactions after loading data: ',response.data.servicesBought)
 
@@ -105,13 +106,13 @@ const UserProfile = () => {
 								className='service-img'
 								src={item.service.img}></img>
 						</Link>				
-						{/* <p>Price: {item.service.price} € </p> */}
+						{/* <p>Price: {item.service.unitPrice} € </p> */}
 						<p>Quantity: {item.service.quantity} </p>					
 					</div>
 				)
 			})}
 			
-			<h1>Services Bought</h1>
+			{/* <h1>Services Bought</h1>
 			{servicesBought.map((item) => {
 				return (
 					<div key={servicesBought.indexOf(item)}>
@@ -124,7 +125,7 @@ const UserProfile = () => {
 						</Link>				
 					</div>
 				)
-			})}
+			})} */}
 		</>
 	);
 };

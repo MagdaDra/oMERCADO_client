@@ -1,8 +1,10 @@
 import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
 
 function Homepage() {
 	const navigate = useNavigate();
-
+	const { user, loading } = useContext(AuthContext);
 	const handleCategoryClick = (selectedCategory) => {
 		navigate('/main', { state: { category: selectedCategory } });
 	};
@@ -10,18 +12,33 @@ function Homepage() {
 	return (
 		<>
 			<div className='homepage-header'>
+				
 				<h1 className='title'>
 					<span className='o'>o</span>MERCADO
 				</h1>
-				<div className='description-and-button'>
+				
+				<div className='description-and-buttons'>
 					<p className='header-description'>
-						The ultimate marketplace for buying and selling professional
-						services. <br /> Simple, secure, and efficient. <br /> <br /> Join
-						our community today and experience the future of service exchange.
+						Join our community today and experience the future of service
+						exchange.
 					</p>
+					{!loading && !user && (
+						<div className='auth-buttons-header'>
+							<Link to='/signup'>
+								<button className='flex text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
+									Signup
+								</button>
+							</Link>
+							<Link to='/login'>
+								<button className='flex text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
+									Login
+								</button>
+							</Link>
+						</div>
+					)}
 
 					<Link to='/main'>
-						<button className='browse-button flex text-white font-bold text-lg items-center rounded-full justify-center p-2 w-32 border border-[#f5f581] hover:bg-gradient-to-r from-violet-600 to-indigo-600 transition-all duration-75 ease-in-out cursor-pointer'>
+						<button className='browse-button flex text-white font-bold text-lg items-center rounded-full justify-center p-2 w-32 border border-[#f5f581] hover:bg-[#8d8d4a]'>
 							Browse all
 						</button>
 					</Link>

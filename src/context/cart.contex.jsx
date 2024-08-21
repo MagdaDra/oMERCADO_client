@@ -84,6 +84,7 @@ const CartProviderWrapper = ({ children }) => {
 		cartTotal();
 	};
 
+
 	const removeFromCart = (item) => {
 		const servicesCopy = services.filter((service) => service._id !== item._id);
 

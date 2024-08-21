@@ -1,4 +1,3 @@
-
 .service-img {
 	width: 30vw;
 }
@@ -10,12 +9,15 @@
 @media screen and (max-width: 768px) {
 	.homepage-header {
 		padding-left: 10vw;
+		background-color: black;
 	}
 
 	.title {
 		color: white;
 		padding-left: 1.5vw;
-		
+		font-size: 32px;
+		font-weight: 900;
+		margin-bottom: 28px;
 	}
 
 	.o {
@@ -34,7 +36,12 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		height: 250vw;
+		background-color: black;
+	}
+
+	.browse-button {
+		margin-top: 20px;
+		margin-bottom: 10px;
 	}
 
 	.category-button {
@@ -122,12 +129,11 @@
 @media screen and (min-width: 769px) {
 	.homepage-header {
 		background-color: black;
-		height: 20vw;
 	}
+
 	.title {
 		color: white;
 		padding-left: 10vw;
-		margin-bottom: 5vw;
 		font-size: 3vw;
 		font-weight: 900;
 		padding-top: 10px;
@@ -137,24 +143,26 @@
 		color: rgb(245, 245, 129);
 	}
 
-	.header-description {
-		color: white;
-		line-height: 30px;
+	.auth-buttons-header {
+		display: flex;
 	}
 
-    .browse-button {
-        margin-left: 10vw;
-    }
+	.header-description {
+		color: white;
+	}
 
-	.description-and-button {
-        display: flex;
-        width: 80vw;
-        margin: 0 auto
+	.browse-button {
+	}
+
+	.description-and-buttons {
+		display: flex;
+		width: 80vw;
+		margin: 0 auto;
 	}
 
 	.category-button {
-		width: 25vw;
-		height: 25vw;
+		width: 20vw;
+		height: 20vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -165,11 +173,12 @@
 
 	.homepage {
 		margin: 0 auto;
-		margin-top: 20px;
+		margin-top: 50px;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		width: 80vw;
+		width:60vw
+
 	}
 	.art-button {
 		background-image: url('../src/assets/IMG_6367.JPG');
@@ -200,20 +209,6 @@
 		background-color: rgb(245, 245, 129);
 	}
 
-	.sport-button {
-		background-color: rgb(245, 245, 129);
-	}
-
-	.sport-text {
-		background-color: rgb(0, 0, 0);
-		width: 22vw;
-		height: 22vw;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 70px;
-	}
-
 	.food-button {
 		/* background-image: url('../src/assets/IMG_6375.JPG'); */
 		background-color: rgb(245, 245, 129);
@@ -222,13 +217,27 @@
 	.food-text {
 		background-image: url('../src/assets/IMG_6389.PNG');
 		background-size: cover;
-		width: 25vw;
-		height: 25vw;
+		width: 20vw;
+		height: 20vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		font-size: 70px;
 	}
+	.sport-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.sport-text {
+		background-color: rgb(0, 0, 0);
+		width: 18vw;
+		height: 18vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 70px;
+	}
+
 
 	.technology-button {
 		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
