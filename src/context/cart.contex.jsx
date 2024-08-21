@@ -1,6 +1,9 @@
 import { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const CartContext = createContext();
+
 
 const CartProviderWrapper = ({ children }) => {
 	// Total sum to pay in the cart
@@ -9,8 +12,9 @@ const CartProviderWrapper = ({ children }) => {
 	// All services in the cart stored as serviceId and quantity
 	const [services, setServices] = useState([]);
 	const [loadedCart, setLoadedCart] = useState(false);
-
 	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
+
+	const navigate = useNavigate();
 
 	// this is setting the total items quantity that appears in the navbar
 	useEffect(() => {
@@ -82,6 +86,14 @@ const CartProviderWrapper = ({ children }) => {
 
 	const removeFromCart = (item) => {
 		const servicesCopy = services.filter((service) => service._id !== item._id);
+
+		if (servicesCopy.length === 0) {
+			localStorage.removeItem('Cart');
+			localStorage.removeItem('Cart_Quantity');
+			localStorage.removeItem('Cart_Total');
+			navigate(0);
+		} else {
+
 		setServices(servicesCopy);
 
 		const cartTotal = () => {
@@ -92,7 +104,7 @@ const CartProviderWrapper = ({ children }) => {
 			setCartTotalQuantity(sum);
 		};
 
-		cartTotal();
+		cartTotal();}
 	};
 
 	return (
