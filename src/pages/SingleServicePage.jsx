@@ -38,6 +38,7 @@ const SingleServicePage = () => {
 		try {
 			const response = await servicesService.getServiceById(serviceId);
 			setService(response.data);
+			
 		} catch (error) {
 			console.error(
 				'Failed to fetch service details in SingleServicePage',
@@ -85,9 +86,7 @@ const SingleServicePage = () => {
 		);
 	};
 
-	const cartItemToAdd={_id: serviceId, quantity: count}
 
-	// const itemInTheCart=services.find((serviceAlreadyInCart) => serviceAlreadyInCart._id === serviceId)
 
 
 	return (
@@ -108,6 +107,7 @@ const SingleServicePage = () => {
 								<p>#{item}</p>
 							</div>
 						);
+
 					})}
 					<p>Date: {service.date}</p>
 					<p>Available quantity: {service.quantity}</p>
@@ -122,10 +122,10 @@ const SingleServicePage = () => {
 					) : (
 						<>
 							<div>
-								{/* <AddSubstractButton serviceId={serviceId}/> */}
+							
 								<AddSubstractButton />
 							</div>
-							<button onClick={() => addToCart(cartItemToAdd, service.quantity)}>Add to cart</button>
+							<button onClick={() => addToCart({_id: serviceId, quantity: count, unitPrice: service.price}, service.quantity)}>Add to cart</button>
 						</>
 					)}
 				</div>

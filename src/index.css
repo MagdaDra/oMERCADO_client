@@ -21,6 +21,7 @@ select {
   min-width: 50px;
   margin: 5px;
   font-size: 18px;
+  color: purple;
 }
 
 label {
@@ -153,5 +154,7 @@ nav li {
 
 .payment-button{
   width: 100px;
+  color: black;
+
 }
 
