@@ -61,7 +61,7 @@ body {
 	}
 
 	.art-button {
-		background-image: url('../src/assets/IMG_6367.JPG');
+		background-image: url('/public/assets/IMG_6367.JPG');
 		background-repeat: no-repeat;
 		background-position: center;
 	}
@@ -84,7 +84,7 @@ body {
 	}
 
 	.food-text {
-		background-image: url('../src/assets/IMG_6389.PNG');
+		background-image: url('/public/assets/IMG_6389.PNG');
 		background-size: cover;
 		width: 26vw;
 		height: 26vw;
@@ -108,13 +108,13 @@ body {
 	}
 
 	.technology-button {
-		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
+		background-image: url('/public/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
 
 	.travel-button {
-		background-image: url('../src/assets/IMG_6370.JPG');
+		background-image: url('/public/assets/IMG_6370.JPG');
 		background-size: cover;
 	}
 }
