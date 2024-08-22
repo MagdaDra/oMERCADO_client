@@ -4,16 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
-  box-sizing: border-box;
 }
 
-a {
-  list-style: none;
-  color: black;
-}
 
 button,
 select {

@@ -1,0 +1,258 @@
+/* ----------------- Homepage ---------------- */
+
+body {
+    background-color: black;
+    color: white;
+}
+
+/* ----------------- Mobile ---------------- */
+
+@media screen and (max-width: 768px) {
+	.homepage-header {
+		padding-left: 10vw;
+	}
+
+	.title {
+		padding-left: 1.5vw;
+		font-size: 32px;
+		font-weight: 900;
+		margin-bottom: 28px;
+	}
+
+	.o {
+		color: rgb(245, 245, 129);
+	}
+
+	.header-description {
+		width: 80%;
+		line-height: 30px;
+		font-weight: 100;
+		margin-bottom: 20px;
+	}
+
+    .auth-buttons-header {
+        margin-bottom: 30px;
+    } 
+
+	.homepage {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: black;
+	}
+
+	.browse-button {
+        margin: 0 auto;
+		margin-top: 20px;
+	}
+
+	.category-button {
+		border: 10px solid black;
+		width: 80vw;
+		height: 30vw;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2vw;
+		font-family: sans-serif;
+		font-weight: 900;
+		font-weight: 400;
+	}
+
+	.art-button {
+		background-image: url('../src/assets/IMG_6367.JPG');
+		background-repeat: no-repeat;
+		background-position: center;
+		font-size: 70px;
+	}
+
+	.design-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.design-text {
+		background-color: rgb(0, 0, 0);
+		width: 20vw;
+		height: 20vw;
+		border-radius: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 50px;
+	}
+	.food-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.food-text {
+		background-image: url('../src/assets/IMG_6389.PNG');
+		background-size: cover;
+		width: 32vw;
+		height: 32vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 50px;
+	}
+
+	.sport-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.sport-text {
+		background-color: rgb(0, 0, 0);
+		width: 70vw;
+		height: 22vw;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 50px;
+	}
+
+	.technology-button {
+		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
+		background-repeat: no-repeat;
+		background-size: cover;
+		font-size: 50px;
+	}
+}
+
+.travel-button {
+	background-image: url('../src/assets/IMG_6370.JPG');
+	background-size: cover;
+	font-size: 50px;
+}
+
+
+
+/* ----------------- Desktop ---------------- */
+
+
+
+@media screen and (min-width: 769px) {
+
+    .homepage-header {
+        display: flex;
+        justify-content: space-between;
+        width: 60vw;
+        margin: 0 auto;
+    }
+
+	.title {
+		font-size: 3vw;
+		font-weight: 900;
+	}
+
+	.o {
+		color: rgb(245, 245, 129);
+	}
+
+	.auth-buttons-header {
+		display: flex;
+        justify-content: space-between;
+        padding-top: 40px;
+	}
+
+
+	.browse-button {
+        margin: 0 auto;
+        margin-top: 40px;
+	}
+
+	.header-and-description {
+        padding-top: 10px;
+        
+	}
+
+	.category-button {
+		width: 20vw;
+		height: 20vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2vw;
+	}
+
+	.homepage {
+		margin: 0 auto;
+		margin-top: 50px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width:60vw
+
+	}
+	.art-button {
+		background-image: url('../src/assets/IMG_6367.JPG');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.art-text {
+		font-size: 70px;
+	}
+
+	.design-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.design-text {
+		background-color: black;
+		border-radius: 100px;
+		width: 13vw;
+		height: 13vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 40px;
+	}
+
+	.travel-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.food-button {
+		/* background-image: url('../src/assets/IMG_6375.JPG'); */
+		background-color: rgb(245, 245, 129);
+	}
+
+	.food-text {
+		background-image: url('../src/assets/IMG_6389.PNG');
+		background-size: cover;
+		width: 20vw;
+		height: 20vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 70px;
+	}
+	.sport-button {
+		background-color: rgb(245, 245, 129);
+	}
+
+	.sport-text {
+		background-color: rgb(0, 0, 0);
+		width: 18vw;
+		height: 18vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 70px;
+	}
+
+
+	.technology-button {
+		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
+		background-repeat: no-repeat;
+		background-size: cover;
+		font-size: 38px;
+	}
+
+	.travel-button {
+		background-image: url('../src/assets/IMG_6370.JPG');
+		background-size: cover;
+		font-size: 70px;
+	}
+}

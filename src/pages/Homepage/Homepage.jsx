@@ -1,6 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../context/auth.context';
+import { AuthContext } from '../../context/auth.context';
 import { useContext } from 'react';
+import './Homepage.css';
 
 function Homepage() {
 	const navigate = useNavigate();
@@ -12,37 +13,31 @@ function Homepage() {
 	return (
 		<>
 			<div className='homepage-header'>
-				
-				<h1 className='title'>
-					<span className='o'>o</span>MERCADO
-				</h1>
-				
-				<div className='description-and-buttons'>
+				<div className='header-and-description'>
+					<h1 className='title'>
+						<span className='o'>o</span>MERCADO
+					</h1>
+
 					<p className='header-description'>
 						Join our community today and experience the future of service
-						exchange.
+						exchange
 					</p>
-					{!loading && !user && (
-						<div className='auth-buttons-header'>
-							<Link to='/signup'>
-								<button className='flex text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white '>
-									Signup
-								</button>
-							</Link>
-							<Link to='/login'>
-								<button className='flex text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
-									Login
-								</button>
-							</Link>
-						</div>
-					)}
-
-					<Link to='/main'>
-						<button className='browse-button flex text-white font-bold text-lg items-center rounded-full justify-center p-2 w-32 border border-[#f5f581] hover:bg-[#8d8d4a]'>
-							Browse all
-						</button>
-					</Link>
 				</div>
+
+				{!loading && !user && (
+					<div className='auth-buttons-header'>
+						<Link to='/signup'>
+							<button className='text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
+								Signup
+							</button>
+						</Link>
+						<Link to='/login'>
+							<button className='text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
+								Login
+							</button>
+						</Link>
+					</div>
+				)}
 			</div>
 
 			<div className='homepage'>
@@ -77,6 +72,11 @@ function Homepage() {
 					Travel
 				</div>
 			</div>
+			<Link to='/main'>
+				<button className='browse-button flex text-white font-bold text-lg items-center rounded-full justify-center p-2 w-32 border border-[#f5f581] hover:bg-[#8d8d4a]'>
+					Browse all
+				</button>
+			</Link>
 		</>
 	);
 }
