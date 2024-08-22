@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/auth.context';
 import { CartContext } from '../../context/cart.contex';
 import { ShoppingCartSimple, UserCircle } from 'phosphor-react';
 import './Navbar.css';
+import logo from '/public/assets/logo.png';
 
 function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);
@@ -127,7 +128,7 @@ function Navbar() {
 						<div className='flex flex-shrink-0 items-center'>
 							<img
 								className='h-6 w-auto'
-								src='/public/assets/logo.png'
+								src={logo}
 								alt='oMERCADO'
 							/>
 						</div>
