@@ -88,7 +88,7 @@ className="relative mx-auto w-full max-w-md mt-20 bg-white px-6 pt-10 pb-8 shado
                 <button type="submit" className="w-full rounded-full bg-black px-3 py-4 text-white focus:bg-gray-600 focus:outline-none">Sign up</button>
             </div>
             <p className="text-center text-sm text-gray-500">Already have an account?&nbsp; 
-                <Link to='/signup' className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none">
+                <Link to='/login' className="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none">
                 &nbsp;Log in
                 </Link>
             </p>

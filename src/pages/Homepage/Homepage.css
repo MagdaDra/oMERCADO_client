@@ -137,15 +137,11 @@ body {
 		color: rgb(245, 245, 129);
 	}
 
-	.auth-buttons-header {
-		display: flex;
-		justify-content: space-between;
-		padding-top: 40px;
-	}
+
 
 	.browse-button {
 		margin: 0 auto;
-		margin-top: 40px;
+		margin-top: 25px;
 	}
 
 	.header-and-description {
@@ -163,7 +159,7 @@ body {
 
 	.homepage {
 		margin: 0 auto;
-		margin-top: 50px;
+		margin-top: 40px;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
