@@ -28,12 +28,12 @@ function Homepage() {
 					<div className='auth-buttons-header'>
 						<Link to='/signup'>
 							<button className='text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
-								Signup
+								Sign up
 							</button>
 						</Link>
 						<Link to='/login'>
 							<button className='text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
-								Login
+								Log in
 							</button>
 						</Link>
 					</div>

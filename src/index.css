@@ -16,15 +16,6 @@ body {
 }
 
 
-button,
-select {
-  padding: 5px 10px;
-  min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
-  color: purple;
-}
-
 label {
   width: 200px;
   display: block;
@@ -38,31 +29,7 @@ textarea {
   margin: 10px;
 }
 
-nav {
-  background: #000000;
-  color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 5px;
-}
 
-nav li {
-  list-style: none;
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.navbarList {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cart {
-  display: flex;
-}
 
 .card {
   width: 400px;
@@ -74,16 +41,8 @@ nav li {
   border-radius: 4px;
 }
 
-.ProjectCard h3::after {
-  content: url("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png");
-  margin-left: 5px;
-}
 
-.EditProjectPage,
-.AddProject,
-.AddTask,
-.SignupPage,
-.LoginPage {
+.SignupPage{
   background: #f9eec3;
   border: 1px solid grey;
   box-shadow: 0px 2px 3px grey;
@@ -99,33 +58,18 @@ nav li {
   background-color: rgb(239, 196, 88);
 }
 
-.SignupPage,
-.LoginPage {
+.SignupPage {
   background-color: #608dd5;
 }
 
-.LoginPage {
-  background-color: #94a7c8;
-}
 
-.EditProjectPage form,
-.AddTask form,
-.AddProject form,
-.SignupPage form,
-.LoginPage form {
+.SignupPage form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.AddTask button,
-.AddProject button {
-  display: block;
-}
 
-.TaskCard {
-  background-color: #dfeef9;
-}
 
 /*  Add / Substr button */
 
@@ -155,7 +99,6 @@ nav li {
 
 .payment-button{
   width: 100px;
-  color: black;
-
 }
+
 

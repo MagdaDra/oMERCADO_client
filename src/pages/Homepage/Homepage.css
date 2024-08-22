@@ -1,8 +1,8 @@
 /* ----------------- Homepage ---------------- */
 
 body {
-    background-color: black;
-    color: white;
+	background-color: black;
+	color: white;
 }
 
 /* ----------------- Mobile ---------------- */
@@ -30,9 +30,9 @@ body {
 		margin-bottom: 20px;
 	}
 
-    .auth-buttons-header {
-        margin-bottom: 30px;
-    } 
+	.auth-buttons-header {
+		margin-bottom: 30px;
+	}
 
 	.homepage {
 		display: flex;
@@ -42,7 +42,7 @@ body {
 	}
 
 	.browse-button {
-        margin: 0 auto;
+		margin: 0 auto;
 		margin-top: 20px;
 	}
 
@@ -50,11 +50,10 @@ body {
 		border: 10px solid black;
 		width: 80vw;
 		height: 30vw;
-
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 2vw;
+		font-size: 9vw;
 		font-family: sans-serif;
 		font-weight: 900;
 		font-weight: 400;
@@ -64,7 +63,6 @@ body {
 		background-image: url('../src/assets/IMG_6367.JPG');
 		background-repeat: no-repeat;
 		background-position: center;
-		font-size: 70px;
 	}
 
 	.design-button {
@@ -79,7 +77,6 @@ body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 50px;
 	}
 	.food-button {
 		background-color: rgb(245, 245, 129);
@@ -88,12 +85,11 @@ body {
 	.food-text {
 		background-image: url('../src/assets/IMG_6389.PNG');
 		background-size: cover;
-		width: 32vw;
-		height: 32vw;
+		width: 26vw;
+		height: 26vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 50px;
 	}
 
 	.sport-button {
@@ -108,37 +104,29 @@ body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 50px;
 	}
 
 	.technology-button {
 		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');
 		background-repeat: no-repeat;
 		background-size: cover;
-		font-size: 50px;
+	}
+
+	.travel-button {
+		background-image: url('../src/assets/IMG_6370.JPG');
+		background-size: cover;
 	}
 }
 
-.travel-button {
-	background-image: url('../src/assets/IMG_6370.JPG');
-	background-size: cover;
-	font-size: 50px;
-}
-
-
-
 /* ----------------- Desktop ---------------- */
 
-
-
 @media screen and (min-width: 769px) {
-
-    .homepage-header {
-        display: flex;
-        justify-content: space-between;
-        width: 60vw;
-        margin: 0 auto;
-    }
+	.homepage-header {
+		display: flex;
+		justify-content: space-between;
+		width: 60vw;
+		margin: 0 auto;
+	}
 
 	.title {
 		font-size: 3vw;
@@ -151,19 +139,17 @@ body {
 
 	.auth-buttons-header {
 		display: flex;
-        justify-content: space-between;
-        padding-top: 40px;
+		justify-content: space-between;
+		padding-top: 40px;
 	}
 
-
 	.browse-button {
-        margin: 0 auto;
-        margin-top: 40px;
+		margin: 0 auto;
+		margin-top: 40px;
 	}
 
 	.header-and-description {
-        padding-top: 10px;
-        
+		padding-top: 10px;
 	}
 
 	.category-button {
@@ -181,8 +167,7 @@ body {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		width:60vw
-
+		width: 60vw;
 	}
 	.art-button {
 		background-image: url('../src/assets/IMG_6367.JPG');
@@ -241,7 +226,6 @@ body {
 		align-items: center;
 		font-size: 70px;
 	}
-
 
 	.technology-button {
 		background-image: url('../src/assets/CDD348F4-50D3-467C-A56A-AD968BC198EC.GIF');

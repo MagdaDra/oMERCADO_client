@@ -1,8 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext} from 'react';
-import { AuthContext } from '../context/auth.context';
-import { CartContext } from '../context/cart.contex';
+import { AuthContext } from '../../context/auth.context';
+import { CartContext } from '../../context/cart.contex';
 import { ShoppingCartSimple } from 'phosphor-react';
+import './Navbar.css'
 
 
 function Navbar() {
@@ -51,10 +52,10 @@ function Navbar() {
 				{!loading && !user && (
 					<>
 						<Link to='/signup'>
-							<button>Signup</button>
+							<button>Sign up</button>
 						</Link>
 						<Link to='/login'>
-							<button>Login</button>
+							<button>Log in</button>
 						</Link>
 					</>
 				)}
