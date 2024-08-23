@@ -78,7 +78,7 @@ function Navbar() {
 					<div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
 						<div className='flex flex-shrink-0 items-center'>
 							<img
-								className='h-6 w-auto'
+								className='nav-title h-6 w-auto'
 								src={logo}
 								alt='oMERCADO'
 							/>

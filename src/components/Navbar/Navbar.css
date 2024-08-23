@@ -1,30 +1,68 @@
 nav {
-    background: #000000;
-    color: white;
-    box-shadow: 0px 1px 1px rgb(245, 245, 129);
-    margin-bottom: 15px;
+  background: #000000;
+  color: white;
+  box-shadow: 0px 1px 1px rgb(245, 245, 129);
+  margin-bottom: 15px;
+}
+
+
+.cart-quantity {
+  margin-right: 3px;
   }
   
-  .cart {
-    display: flex;
-    justify-content: space-between;
-    align-items:  center;
-    margin-right: 30px;
-  }
-
-  .cart-quantity {
-    margin-right: 3px;
-  }
-
   .userName-icon {
     display: flex;
     align-items: center;
   }
-
+  
   .userName {
     margin-right: 5px;
   }
-
+  
   /* --------------------- mobile --------------------- */
 
-  /* add mobile breaks */
+  @media screen and (max-width: 381px) {
+
+    .userName {
+      display: none;
+    }
+
+    .cart {
+      margin-right: 5px;
+      display: flex;
+      align-items: center
+    }
+
+    .nav-title {
+      margin-right: 20vw;
+    }
+
+  }
+
+
+  /* ---------- between mobile and desktop ------------ */
+  
+  @media screen and (min-width: 381px) and (max-width: 599px) {
+  
+    .userName {
+      display: none;
+    }
+  
+    .cart {
+      margin-right: 5px;
+      display: flex;
+      align-items: center
+    }
+  
+    }
+  
+  /* --------------------- desktop -------------------- */
+
+  @media screen and (min-width: 600px) {
+    .cart {
+      display: flex;
+      justify-content: space-between;
+      align-items:  center;
+      margin-right: 30px;
+    }
+  }
