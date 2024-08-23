@@ -70,6 +70,8 @@ const SingleServicePage = () => {
 		}
 	};
 
+	console.log('serviceId: ', serviceId)
+
 	// Add/Substract button
 
 	const AddSubstractButton = () => {
@@ -85,8 +87,6 @@ const SingleServicePage = () => {
 			</div>
 		);
 	};
-
-
 
 
 	return (

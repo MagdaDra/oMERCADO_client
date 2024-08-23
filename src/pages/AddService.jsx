@@ -109,6 +109,7 @@ const AddService = () => {
 			<form onSubmit={handleSubmit}>
 				<label>Name</label>
 				<input
+					className='text-black'
 					type='text'
 					name='serviceName'
 					value={serviceName}
@@ -117,6 +118,7 @@ const AddService = () => {
 
 				<label>Description</label>
 				<textarea
+					className='text-black'
 					rows={15}
 					cols={5}
 					itemType='text'
@@ -126,6 +128,7 @@ const AddService = () => {
 
 				<label>Price</label>
 				<input
+					className='text-black'
 					type='number'
 					name='price'
 					value={price}
@@ -134,6 +137,7 @@ const AddService = () => {
 
 				<label>Quantity</label>
 				<input
+					className='text-black'
 					type='number'
 					name='quantity'
 					value={quantity}
@@ -142,6 +146,7 @@ const AddService = () => {
 
 				<label>Date</label>
 				<input
+					className='text-black'
 					type='date'
 					name='date'
 					value={date}

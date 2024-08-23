@@ -20,7 +20,7 @@ const EditService = () => {
 	const { serviceId } = useParams();
 
 	const categories = [
-		{ id: 1, label: 'IT' },
+		{ id: 1, label: 'Technology' },
 		{ id: 2, label: 'Art' },
 		{ id: 3, label: 'Design' },
 		{ id: 4, label: 'Sport' },
@@ -128,6 +128,7 @@ const EditService = () => {
 			<form onSubmit={handleSubmit}>
 				<label>Name</label>
 				<input
+					className='text-black'
 					type='text'
 					name='serviceName'
 					value={serviceName}
@@ -136,6 +137,7 @@ const EditService = () => {
 
 				<label>Description</label>
 				<textarea
+					className='text-black'
 					rows={15}
 					cols={5}
 					itemType='text'
@@ -145,6 +147,7 @@ const EditService = () => {
 
 				<label>Price</label>
 				<input
+					className='text-black'
 					type='number'
 					name='price'
 					value={price}
@@ -153,6 +156,7 @@ const EditService = () => {
 
 				<label>Quantity</label>
 				<input
+					className='text-black'
 					type='number'
 					name='quantity'
 					value={quantity}
@@ -161,6 +165,7 @@ const EditService = () => {
 
 				<label>Date</label>
 				<input
+					className='text-black'
 					type='date'
 					name='date'
 					value={date}
