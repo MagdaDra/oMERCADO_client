@@ -1,4 +1,4 @@
-nav {
+/* nav {
     background: #000000;
     color: white;
     padding: 0px 20px;
@@ -18,7 +18,7 @@ nav {
   .navbarList {
     display: flex;
     justify-content: space-between;
-  }
+  } */
 
   .cart {
     display: flex;

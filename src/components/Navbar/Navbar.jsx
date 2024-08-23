@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import { CartContext } from '../../context/cart.contex';
 import { ShoppingCartSimple, UserCircle } from 'phosphor-react';
@@ -10,12 +10,17 @@ function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);
 	const { cartTotalQuantity } = useContext(CartContext);
 	const navigate = useNavigate();
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
 	const handleDiscoverServices = () => {
 		// Clear the category state, navigate and refresh
 		navigate('/main', { state: { category: '' } });
 		navigate(0);
 	};
+
+	const toggleMobileMenu = () => {
+		setIsMobileMenuOpen(!isMobileMenuOpen) // Toggle mobile menu state
+	}
 
 	return (
 		// <nav className='Navbar'>
@@ -81,9 +86,10 @@ function Navbar() {
 						{/* <!-- Mobile menu button--> */}
 						<button
 							type='button'
+							onClick={toggleMobileMenu} // Toggle the menu on click
 							className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
 							aria-controls='mobile-menu'
-							aria-expanded='false'>
+							aria-expanded={isMobileMenuOpen}>
 							<span className='absolute -inset-0.5'></span>
 							<span className='sr-only'>Open main menu</span>
 							{/* <!--
@@ -92,7 +98,7 @@ function Navbar() {
 							Menu open: "hidden", Menu closed: "block"
 							--> */}
 							<svg
-								className='block h-6 w-6'
+								className={`${isMobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
 								fill='none'
 								viewBox='0 0 24 24'
 								strokeWidth='1.5'
@@ -110,7 +116,7 @@ function Navbar() {
             Menu open: "block", Menu closed: "hidden"
           --> */}
 							<svg
-								className='hidden h-6 w-6'
+								className={`${isMobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
 								fill='none'
 								viewBox='0 0 24 24'
 								strokeWidth='1.5'
@@ -207,7 +213,7 @@ function Navbar() {
 
 			{/* <!-- Mobile menu, show/hide based on menu state. --> */}
 			<div
-				className='sm:hidden'
+				className={`${isMobileMenuOpen ? 'block' : 'hidden'} sm:hidden`}
 				id='mobile-menu'>
 				<div className='space-y-1 px-2 pb-3 pt-2'>
 					{/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
