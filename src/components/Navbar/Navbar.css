@@ -1,25 +1,30 @@
-/* nav {
+nav {
     background: #000000;
     color: white;
-    padding: 0px 20px;
-    box-shadow: 0px 1px 2px gray;
-    width: 100%;
+    box-shadow: 0px 1px 1px rgb(245, 245, 129);
     margin-bottom: 15px;
-    padding: 5px;
   }
   
-  nav li {
-    list-style: none;
-    color: white;
-    font-size: 24px;
-    font-weight: 600;
-  }
-
-  .navbarList {
-    display: flex;
-    justify-content: space-between;
-  } */
-
   .cart {
     display: flex;
+    justify-content: space-between;
+    align-items:  center;
+    margin-right: 30px;
   }
+
+  .cart-quantity {
+    margin-right: 3px;
+  }
+
+  .userName-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .userName {
+    margin-right: 5px;
+  }
+
+  /* --------------------- mobile --------------------- */
+
+  /* add mobile breaks */

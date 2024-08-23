@@ -23,61 +23,6 @@ function Navbar() {
 	}
 
 	return (
-		// <nav className='Navbar'>
-		// 	<ul className='navbarList'>
-
-		// 		<button onClick={handleDiscoverServices}>Discover services</button>
-
-		// 		{!loading && user && user.typeOfUser.includes('Seller') && (
-		// 			<>
-		// 				<Link to='/add-service'>
-		// 					<button>Add service</button>
-		// 				</Link>
-		// 			</>
-		// 		)}
-
-		// 		{!loading && !user && (
-		// 			<>
-		// 				<Link to='/signup'>
-		// 					<button>Sign up</button>
-		// 				</Link>
-		// 				<Link to='/login'>
-		// 					<button>Log in</button>
-		// 				</Link>
-		// 			</>
-		// 		)}
-
-		// 		{!loading && user && (
-		// 			<button onClick={logout}>Log out</button>
-		// 		)}
-
-		// 		<div className='cart'>
-		// 			<p>{cartTotalQuantity}</p>
-
-		// 			<Link to='/cart'>
-		// 				<ShoppingCartSimple
-		// 					size={32}
-		// 					color='#ffffff'
-		// 				/>
-		// 			</Link>
-		// 		</div>
-
-		// 		<p>{user ? `${user.name}` : ''}</p>
-
-		// 		{!loading && user && (
-		// 			<>
-		// 				<Link to='/user-profile'>
-		// 					<UserCircle
-		// 						size={32}
-		// 						color='#cfcfcf'
-		// 					/>
-		// 				</Link>
-		// 			</>
-		// 		)}
-		// 	</ul>
-		// </nav>
-
-		//-----------------------------------------------------------------------------------------------------------------------------------
 
 		<nav className='bg-black'>
 			<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
@@ -87,7 +32,7 @@ function Navbar() {
 						<button
 							type='button'
 							onClick={toggleMobileMenu} // Toggle the menu on click
-							className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
+							className='relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
 							aria-controls='mobile-menu'
 							aria-expanded={isMobileMenuOpen}>
 							<span className='absolute -inset-0.5'></span>
@@ -144,14 +89,14 @@ function Navbar() {
 
 								<button
 									onClick={handleDiscoverServices}
-									className='rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+									className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 									Browse all
 								</button>
 
 								{!loading && user && user.typeOfUser.includes('Seller') && (
 									<>
 										<Link to='/add-service'>
-											<button className='rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+											<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 												Add service
 											</button>
 										</Link>
@@ -161,12 +106,12 @@ function Navbar() {
 								{!loading && !user && (
 									<>
 										<Link to='/signup'>
-											<button className='rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+											<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 												Sign up
 											</button>
 										</Link>
 										<Link to='/login'>
-											<button className='rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+											<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 												Log in
 											</button>
 										</Link>
@@ -175,7 +120,7 @@ function Navbar() {
 
 								{!loading && user && (
 									<button
-										className='rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+										className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'
 										onClick={logout}>
 										Log out
 									</button>
@@ -184,29 +129,34 @@ function Navbar() {
 						</div>
 					</div>
 					<div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
+						
 						<div className='cart'>
-							<p>{cartTotalQuantity}</p>
+							<p className='cart-quantity'>{cartTotalQuantity}</p>
 
 							<Link to='/cart'>
 								<ShoppingCartSimple
-									size={32}
+									size={28}
 									color='#ffffff'
 								/>
 							</Link>
 						</div>
 
-						<p>{user ? `${user.name}` : ''}</p>
+						<div className='userName-icon'>
+
+						<p className='userName'>{user ? `${user.name}` : ''}</p>
 
 						{!loading && user && (
 							<>
 								<Link to='/user-profile'>
 									<UserCircle
 										size={32}
-										color='#cfcfcf'
+										color='#ffffff'
 									/>
 								</Link>
 							</>
 						)}
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -227,7 +177,7 @@ function Navbar() {
 					{!loading && user && user.typeOfUser.includes('Seller') && (
 						<>
 							<Link to='/add-service'>
-								<button className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+								<button className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 									Add service
 								</button>
 							</Link>
@@ -237,12 +187,12 @@ function Navbar() {
 					{!loading && !user && (
 						<>
 							<Link to='/signup'>
-								<button className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+								<button className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 									Sign up
 								</button>
 							</Link>
 							<Link to='/login'>
-								<button className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'>
+								<button className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
 									Log in
 								</button>
 							</Link>
@@ -251,7 +201,7 @@ function Navbar() {
 
 					{!loading && user && (
 						<button
-							className='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+							className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'
 							onClick={logout}>
 							Log out
 						</button>
