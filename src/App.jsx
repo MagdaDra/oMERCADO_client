@@ -7,7 +7,7 @@ import UserProfile from './pages/UserProfile';
 import Private from './components/Private';
 import Anon from './components/Anon';
 import AddService from './pages/AddService';
-import SingleServicePage from './pages/SingleServicePage';
+import SingleServicePage from './pages/SingleServicePage/SingleServicePage';
 import EditService from './pages/EditService';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';

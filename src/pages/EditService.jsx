@@ -20,12 +20,12 @@ const EditService = () => {
 	const { serviceId } = useParams();
 
 	const categories = [
-		{ id: 1, label: 'Technology' },
-		{ id: 2, label: 'Art' },
-		{ id: 3, label: 'Design' },
+		{ id: 1, label: 'Art' },
+		{ id: 2, label: 'Design' },
+		{ id: 3, label: 'Food' },
 		{ id: 4, label: 'Sport' },
-		{ id: 6, label: 'Food' },
-		{ id: 8, label: 'Sightseeing' },
+		{ id: 6, label: 'Technology' },
+		{ id: 8, label: 'Travel' },
 	];
 
 	const navigate = useNavigate();

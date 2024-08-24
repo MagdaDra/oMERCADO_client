@@ -1,10 +1,10 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import ServicesAPIService from '../services/services.api';
-import { AuthContext } from '../context/auth.context';
-import { CartContext } from '../context/cart.contex';
-import UserAPIService from '../services/user.api';
-//import AddSubstractButton from '../components/AddSubstractButton';
+import ServicesAPIService from '../../services/services.api';
+import { AuthContext } from '../../context/auth.context';
+import { CartContext } from '../../context/cart.contex';
+import UserAPIService from '../../services/user.api';
+import './SingleServicePage.css'
 
 
 const userService = new UserAPIService();
@@ -94,40 +94,49 @@ const SingleServicePage = () => {
 			{!service && <h3>No service found</h3>}
 
 			{service && (
-				<div className='single-service'>
-					<h2>{service.serviceName}</h2>
-					<img
-						className='service-img'
-						src={service.img}
-						alt={`${service.serviceName} image`}></img>
-					<p>{service.serviceDescription}</p>
+				<div className='single-service rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex ml-7 mr-7 mt-7'>
+					<div>
+						<img
+							className='service-img h-96'
+							src={service.img}
+							alt={`${service.serviceName} image`}>
+
+						</img>
+					</div>
+					<div className='mt-7 ml-7'>
+					<div className='font-bold text-gray-900 text-xl'>{service.serviceName}</div>
+					<p className='text-gray-900'>{service.serviceDescription}</p>
+					<div className='px-6 pt-4 pb-2'>
 					{service.category.map((item) => {
 						return (
-							<div key={service.category.indexOf(item)}>
-								<p>#{item}</p>
+							<div key={service.category.indexOf(item)}
+							className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+								#{item}
 							</div>
 						);
 
 					})}
-					<p>Date: {service.date}</p>
-					<p>Available quantity: {service.quantity}</p>
-					<p>Price: {service.price} €</p>
+					</div>
+					<p className='text-gray-900'>Date: {service.date}</p>
+					<p className='text-gray-900'>Available quantity: {service.quantity}</p>
+					<p className='text-gray-900'>Price: {service.price} €</p>
 					{isServiceOffered ? (
 						<>
 							<Link to={`/services/edit/${serviceId}`}>
-								<button>Edit</button>
+								<button className='text-gray-900'>Edit</button>
 							</Link>
-							<button onClick={() => handleDelete(serviceId)}>Delete</button>
+							<button onClick={() => handleDelete(serviceId)} className='text-gray-900'>Delete</button>
 						</>
 					) : (
 						<>
-							<div>
+							<div className='text-gray-900'>
 							
 								<AddSubstractButton />
 							</div>
-							<button onClick={() => addToCart({_id: serviceId, quantity: count, unitPrice: service.price}, service.quantity)}>Add to cart</button>
+							<button onClick={() => addToCart({_id: serviceId, quantity: count, unitPrice: service.price}, service.quantity)} className='text-gray-900'>Add to cart</button>
 						</>
 					)}
+					</div>	
 				</div>
 			)}
 		</div>

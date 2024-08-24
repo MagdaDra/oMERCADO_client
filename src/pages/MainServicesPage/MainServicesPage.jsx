@@ -66,13 +66,15 @@ const MainServicesPage = () => {
 						return (
 							<div
 								key={service._id}
-								className='max-w-sm rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200'>
+								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6'>
 								<Link to={`/services/${service._id}`}>
-									<div className='flex justify-center'>
-										<img
-											className='w-5/12'
-											src={service.img}
-										/>
+									<div
+										className={'h-3/5'}
+										style={{
+											backgroundImage: `url(${service.img})`,
+											backgroundSize: 'cover',
+											backgroundPosition: 'center',
+										}}>
 									</div>
 								</Link>
 								<div className='px-6 py-4'>
@@ -89,7 +91,9 @@ const MainServicesPage = () => {
 								<div className='px-6 pt-4 pb-2'>
 									{service.category.map((category) => {
 										return (
-											<span key={service.category.indexOf(category)} className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+											<span
+												key={service.category.indexOf(category)}
+												className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
 												#{category}
 											</span>
 										);
