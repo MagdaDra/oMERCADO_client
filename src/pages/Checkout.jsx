@@ -40,66 +40,69 @@ function Checkout() {
 	return (
 		<>
 			<div className='bg-white text-gray-900 rounded-2xl w-1/2 m-auto mt-14 shadow-lg shadow-gray-200'>
-				
-				<form onSubmit={handleSubmit} className='w-full'>
-					<div className='flex'>
-						<div className='flex flex-col'>
+				<form
+					onSubmit={handleSubmit}
+					className='w-full pt-5'>
+					<div>
+						<div className='flex justify-center'>
 							<input
-								className='rounded-md border border-gray-300 text-sm'
+								className='rounded-md border border-gray-300 text-sm w-1/3'
 								type='string'
 								placeholder='Full name'></input>
+
 							<input
-								className='rounded-md border border-gray-300 text-sm'
+								className='rounded-md border border-gray-300 text-sm w-1/3'
+								type='string'
+								placeholder='Email'></input>
+						</div>
+
+						<div className='flex justify-center'>
+							<input
+								className='rounded-md border border-gray-300 text-sm w-1/3'
 								type='string'
 								placeholder='Name on card'></input>
+
 							<input
-								className='rounded-md border border-gray-300 text-sm'
+								className='rounded-md border border-gray-300 text-sm w-1/3'
 								type='string'
 								placeholder='Expiration date (MM / YY)'
 							/>
 						</div>
 
-						<div className='flex flex-col'>	
-
+						<div className='flex justify-center'>
 							<input
-								className='rounded-md border border-gray-300 text-sm'
-								type='string'
-								placeholder='Email'></input>
-						
-							<input
-								className='rounded-md border border-gray-300 text-sm'
+								className='rounded-md border border-gray-300 text-sm w-1/3'
 								type='number'
 								placeholder='Card number'
 							/>
-						
-						
+
 							<input
-								className='rounded-md border border-gray-300 text-sm'
+								className='rounded-md border border-gray-300 text-sm w-1/3'
 								type='number'
 								placeholder='Security code (CVV)'
 							/>
-						
-						
-							<div className='w-1/4'>
-								<img
-									src={cards}
-									className='flex justify-center items-center'
-								/>
-							</div>
+						</div>
 
-							<div className='summary'>
-								<p>Total to pay: {totalCartSum} €</p>
-							</div>
+						<div className='flex justify-center'>
+							<div className='w-1/3'></div>
+							<div className='w-1/3 flex flex-col items-end'>
+								<div className='w-3/4 mt-2'>
+									<img src={cards} />
+								</div>
 
-							<button
-								type='submit'
-								className='text-white text-sm items-center rounded-lg justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-2'>
-								Pay
-							</button>
-						</div>	
+								<div className='mt-5'>
+									<p>Total to pay: {totalCartSum} €</p>
+								</div>
+
+								<button
+									type='submit'
+									className='text-white text-sm items-center w-1/2 rounded-lg justify-center p-2 border bg-black hover:bg-[#9a9a9a] mt-5 mb-5'>
+									Pay
+								</button>
+							</div>
+						</div>
 					</div>
 				</form>
-				
 			</div>
 		</>
 	);
