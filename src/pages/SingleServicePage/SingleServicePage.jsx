@@ -76,12 +76,12 @@ const SingleServicePage = () => {
 
 	const AddSubstractButton = () => {
 		return (
-			<div className='add-substr-button'>
-				<button onClick={() => (count > 0 ? setCount(count - 1) : setCount(0))}>
+			<div className='flex text-gray-900 text-sm items-center rounded-full justify-center p-2 w-24 mt-6 border border-gray-400 hover:bg-[#9a9a9a]'>
+				<button onClick={() => (count > 0 ? setCount(count - 1) : setCount(0))} className='mr-4'>
 					-
 				</button>
 				<p>{count}</p>
-				<button onClick={() => (count < service.quantity ? setCount(count + 1): setCount(service.quantity))}>
+				<button onClick={() => (count < service.quantity ? setCount(count + 1): setCount(service.quantity))} className='ml-4'>
 					+
 				</button>
 			</div>
@@ -94,7 +94,7 @@ const SingleServicePage = () => {
 			{!service && <h3>No service found</h3>}
 
 			{service && (
-				<div className='single-service rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex ml-7 mr-7 mt-7'>
+				<div className='single-service rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex ml-20 mr-20 mt-20'>
 					<div>
 						<img
 							className='service-img h-96'
@@ -105,12 +105,12 @@ const SingleServicePage = () => {
 					</div>
 					<div className='mt-7 ml-7'>
 					<div className='font-bold text-gray-900 text-xl'>{service.serviceName}</div>
-					<p className='text-gray-900'>{service.serviceDescription}</p>
-					<div className='px-6 pt-4 pb-2'>
+					<p className='text-gray-900 mt-2'>{service.serviceDescription}</p>
+					<div className='pt-4 pb-2'>
 					{service.category.map((item) => {
 						return (
 							<div key={service.category.indexOf(item)}
-							className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+							className='inline-block bg-gray-200 rounded-full px-3 py-1 mr-2 text-sm font-semibold text-gray-700 mb-2'>
 								#{item}
 							</div>
 						);
@@ -118,22 +118,22 @@ const SingleServicePage = () => {
 					})}
 					</div>
 					<p className='text-gray-900'>Date: {service.date}</p>
-					<p className='text-gray-900'>Available quantity: {service.quantity}</p>
-					<p className='text-gray-900'>Price: {service.price} €</p>
+					<p className='text-gray-900 mt-2'>Available quantity: {service.quantity}</p>
+					<p className='text-gray-900 mt-2'>Price: {service.price} €</p>
 					{isServiceOffered ? (
 						<>
 							<Link to={`/services/edit/${serviceId}`}>
-								<button className='text-gray-900'>Edit</button>
+								<button className='text-gray-900 mt-2'>Edit</button>
 							</Link>
-							<button onClick={() => handleDelete(serviceId)} className='text-gray-900'>Delete</button>
+							<button onClick={() => handleDelete(serviceId)} className='text-gray-900 mt-2'>Delete</button>
 						</>
 					) : (
 						<>
-							<div className='text-gray-900'>
+							<div className='text-gray-900 mt-2'>
 							
 								<AddSubstractButton />
 							</div>
-							<button onClick={() => addToCart({_id: serviceId, quantity: count, unitPrice: service.price}, service.quantity)} className='text-gray-900'>Add to cart</button>
+							<button onClick={() => addToCart({_id: serviceId, quantity: count, unitPrice: service.price}, service.quantity)} className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-2'>Add to cart</button>
 						</>
 					)}
 					</div>	
