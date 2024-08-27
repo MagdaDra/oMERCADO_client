@@ -103,9 +103,14 @@ const Cart = () => {
 					<div className='flex justify-end border-t-2 mt-10 mr-10 ml-10 pt-5 mb-10'>
 						Total: {totalCartSum} €
 					</div>
-					<div className='flex justify-end mr-10 pb-10'>
+					<div className='flex justify-end items-center mr-10 pb-10'>
+						<Link to={'/main'}>
+							<button className='text-black text-sm font-semibold items-center rounded-full justify-center p-2 w-48 bg-[#F5F581] hover:bg-[#8d8d4a] mt-2'>
+								Continue shopping
+							</button>
+						</Link>
 						<Link to={'/checkout'}>
-							<button className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-2'>
+							<button className='text-white text-sm font-semibold items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-2 ml-5'>
 								Checkout
 							</button>
 						</Link>

@@ -107,12 +107,12 @@ const SingleServicePage = () => {
 							color='#f5f581'
 						/>
 					</div>
-					<div className='text-white mt-10 text-center'>500 <br/> Internal server error </div>
+					<div className='text-white mt-10 text-center'> 500 <br/> Internal server error </div>
 				</div>
 			)}
 
 			{service && (
-				<div className='single-service rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex ml-20 mr-20 mt-20'>
+				<div className='single-service rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex ml-20 mr-20 mt-20 w-1/2'>
 					<div>
 						<img
 							className='service-img h-96'
