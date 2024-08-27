@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { CartContext } from '../context/cart.contex';
-import { AuthContext } from '../context/auth.context';
-import TransactionAPIService from '../services/transaction.api';
-import cards from '/public/assets/cards.png';
+import { CartContext } from '../../context/cart.contex';
+import { AuthContext } from '../../context/auth.context';
+import TransactionAPIService from '../../services/transaction.api';
+import cards from '/assets/cards.png';
+import './Checkout.css'
 
 const transactionService = new TransactionAPIService();
 
@@ -71,15 +72,15 @@ function Checkout() {
 
 						<div className='flex justify-center'>
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/3'
+								className='rounded-md border border-gray-300 text-sm w-1/2'
 								type='number'
 								placeholder='Card number'
 							/>
 
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/3'
+								className='rounded-md border border-gray-300 text-sm w-1/6'
 								type='number'
-								placeholder='Security code (CVV)'
+								placeholder='CVV'
 							/>
 						</div>
 
@@ -96,7 +97,7 @@ function Checkout() {
 
 								<button
 									type='submit'
-									className='text-white text-sm items-center w-1/2 rounded-lg justify-center p-2 border bg-black hover:bg-[#9a9a9a] mt-5 mb-5'>
+									className='text-white text-sm items-center w-1/2 rounded-full justify-center p-2 border bg-black hover:bg-[#9a9a9a] mt-5 mb-5'>
 									Pay
 								</button>
 							</div>

@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/auth.context';
 import { CartContext } from '../../context/cart.contex';
 import { ShoppingCartSimple, UserCircle } from 'phosphor-react';
 import './Navbar.css';
-import logo from '/public/assets/logo.png';
+import logo from '/assets/logo.png';
 
 function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);

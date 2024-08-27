@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import ServicesAPIService from '../services/services.api';
-import { AuthContext } from '../context/auth.context';
+import ServicesAPIService from '../../services/services.api';
+import { AuthContext } from '../../context/auth.context';
+import './EditService.css'
 
 const servicesService = new ServicesAPIService();
 
@@ -122,22 +123,22 @@ const EditService = () => {
 	}, []);
 
 	return (
-		<div>
-			<h2>Edit Service</h2>
+		<div className='flex flex-col items-center bg-white text-gray-900 rounded-2xl w-1/2 m-auto mt-14 shadow-lg shadow-gray-200'>
+			<h2 className='mt-5 mb-5 font-bold'>Edit Service</h2>
 
-			<form onSubmit={handleSubmit}>
-				<label>Name</label>
+			<form onSubmit={handleSubmit} className='w-3/4'>
+				<label className='mt-2'>Name</label>
 				<input
-					className='text-black'
+					className='rounded-md border border-gray-300 text-sm w-full'
 					type='text'
 					name='serviceName'
 					value={serviceName}
 					onChange={handleServiceName}
 				/>
 
-				<label>Description</label>
+				<label className='mt-2'>Description</label>
 				<textarea
-					className='text-black'
+					className='rounded-md border border-gray-300 text-sm w-full'
 					rows={15}
 					cols={5}
 					itemType='text'
@@ -145,41 +146,43 @@ const EditService = () => {
 					value={serviceDescription}
 					onChange={handleServiceDescription}></textarea>
 
-				<label>Price</label>
+				<label className='mt-2'>Price</label>
 				<input
-					className='text-black'
+					className='rounded-md border border-gray-300 text-sm w-full'
 					type='number'
 					name='price'
 					value={price}
 					onChange={handlePrice}
 				/>
 
-				<label>Quantity</label>
+				<label className='mt-2'>Quantity</label>
 				<input
-					className='text-black'
+					className='rounded-md border border-gray-300 text-sm w-full'
 					type='number'
 					name='quantity'
 					value={quantity}
 					onChange={handleQuantity}
 				/>
 
-				<label>Date</label>
+				<label className='mt-2'>Date</label>
 				<input
-					className='text-black'
+					className='rounded-md border border-gray-300 text-sm w-full'
 					type='date'
 					name='date'
 					value={date}
 					onChange={handleDate}
 				/>
 
-				<label>Image</label>
+				<label className='mt-2'>Image</label>
 				<input
+					className='rounded-md border border-gray-300 text-sm w-full'
 					type='file'
 					name='img'
 					onChange={handleImg}
 				/>
 
-				<label>Category</label>
+				<label className='mt-2'>Category</label>
+				<div className='flex flex-col items-start w-full mt-2'>
 				{categories.map((categoryValue) => (
 					<div key={categoryValue.id}>
 						<input
@@ -188,16 +191,21 @@ const EditService = () => {
 							value={categoryValue.label}
 							onChange={handleCategory}
                             checked={category.includes(categoryValue.label)} // this checks if the category is selected
+							className="h-3 w-5"
 						/>
 						{categoryValue.label}
 					</div>
 				))}
+				</div>
 
+				<div className='flex justify-center mt-5 mb-5'>
 				<button
 					type='submit'
-					disabled={loading}>
+					disabled={loading}
+					className='text-white text-sm items-center w-1/2 rounded-full justify-center p-2 border bg-black hover:bg-[#9a9a9a] mt-5 mb-5'>
 					Edit
 				</button>
+				</div>
 			</form>
 		</div>
 	);

@@ -16,31 +16,7 @@ body {
 }
 
 
-label {
-  width: 200px;
-  display: block;
-}
-
-input,
-textarea {
-  width: 200px;
-  padding: 10px;
-  display: inline-block;
-  margin: 10px;
-}
 
 
-
-/* Checkout */
-
-.payment-form{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.payment-button{
-  width: 100px;
-}
 
 
