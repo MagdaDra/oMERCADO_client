@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth.context';
 import { CartContext } from '../../context/cart.contex';
 import UserAPIService from '../../services/user.api';
 import './SingleServicePage.css';
-import { SmileySad } from 'phosphor-react';
+import { Skull } from 'phosphor-react';
 
 const userService = new UserAPIService();
 const servicesService = new ServicesAPIService();
@@ -102,12 +102,12 @@ const SingleServicePage = () => {
 			{!service && (
 				<div className='flex flex-col items-center mt-32'>
 					<div>
-						<SmileySad
+						<Skull
 							size={82}
 							color='#f5f581'
 						/>
 					</div>
-					<div className='text-white mt-10 text-center'>No services found</div>
+					<div className='text-white mt-10 text-center'>500 <br/> Internal server error </div>
 				</div>
 			)}
 

@@ -27,6 +27,7 @@ const MainServicesPage = () => {
 			setServices(filteredServices);
 			setServicesBeforeSearch(filteredServices);
 			setLoading(false)
+			
 		} catch (error) {
 			setLoading(false)
 			console.error(
