@@ -10,7 +10,7 @@ function Navbar() {
 	const { user, loading, logout } = useContext(AuthContext);
 	const { cartTotalQuantity } = useContext(CartContext);
 	const navigate = useNavigate();
-	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const handleDiscoverServices = () => {
 		// Clear the category state, navigate and refresh
@@ -19,11 +19,10 @@ function Navbar() {
 	};
 
 	const toggleMobileMenu = () => {
-		setIsMobileMenuOpen(!isMobileMenuOpen) // Toggle mobile menu state
-	}
+		setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu state
+	};
 
 	return (
-
 		<nav className='bg-black w-full'>
 			<div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
 				<div className='relative flex h-16 items-center justify-between'>
@@ -87,6 +86,12 @@ function Navbar() {
 							<div className='flex space-x-4'>
 								{/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
 
+								<Link to='/'>
+									<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+										Homepage
+									</button>
+								</Link>
+
 								<button
 									onClick={handleDiscoverServices}
 									className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
@@ -129,7 +134,6 @@ function Navbar() {
 						</div>
 					</div>
 					<div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
-						
 						<div className='cart'>
 							<p className='cart-quantity'>{cartTotalQuantity}</p>
 
@@ -142,20 +146,18 @@ function Navbar() {
 						</div>
 
 						<div className='userName-icon'>
+							<p className='userName'>{user ? `${user.name}` : ''}</p>
 
-						<p className='userName'>{user ? `${user.name}` : ''}</p>
-
-						{!loading && user && (
-							<>
-								<Link to='/user-profile'>
-									<UserCircle
-										size={32}
-										color='#ffffff'
-									/>
-								</Link>
-							</>
-						)}
-
+							{!loading && user && (
+								<>
+									<Link to='/user-profile'>
+										<UserCircle
+											size={32}
+											color='#ffffff'
+										/>
+									</Link>
+								</>
+							)}
 						</div>
 					</div>
 				</div>
@@ -167,6 +169,13 @@ function Navbar() {
 				id='mobile-menu'>
 				<div className='flex flex-col items-start space-y-1 px-2 pb-3 pt-2'>
 					{/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+
+					<Link to='/'>
+						<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+							Homepage
+						</button>
+					</Link>
+
 					<button
 						onClick={handleDiscoverServices}
 						className='rounded-md bg-black px-3 py-2 text-sm font-medium text-white'

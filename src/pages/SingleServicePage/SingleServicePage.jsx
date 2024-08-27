@@ -72,7 +72,6 @@ const SingleServicePage = () => {
 		console.log('serviceId: ', serviceId);
 	};
 
-
 	// Add/Substract button
 
 	const AddSubstractButton = () => {
@@ -107,7 +106,10 @@ const SingleServicePage = () => {
 							color='#f5f581'
 						/>
 					</div>
-					<div className='text-white mt-10 text-center'> 500 <br/> Internal server error </div>
+					<div className='text-white mt-10 text-center'>
+						{' '}
+						500 <br /> Internal server error{' '}
+					</div>
 				</div>
 			)}
 
@@ -172,6 +174,12 @@ const SingleServicePage = () => {
 									className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-2'>
 									Add to cart
 								</button>
+
+								<Link to={'/main'}>
+									<button className='text-black text-sm font-semibold items-center rounded-full justify-center p-2 w-48 bg-[#F5F581] hover:bg-[#8d8d4a] mt-2 ml-5'>
+										Continue shopping
+									</button>
+								</Link>
 							</>
 						)}
 					</div>
