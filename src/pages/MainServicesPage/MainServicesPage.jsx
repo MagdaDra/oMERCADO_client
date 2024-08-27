@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ServicesAPIService from '../../services/services.api';
 import Search from '../../components/Search';
 import './MainServicesPage.css';
-import { SmileySad } from 'phosphor-react';
+import { SmileySad, SpinnerGap } from 'phosphor-react';
 
 const servicesService = new ServicesAPIService();
 
@@ -11,13 +11,13 @@ const MainServicesPage = () => {
 	const [services, setServices] = useState([]);
 	const [servicesBeforeSearch, setServicesBeforeSearch] = useState([]);
 	const [search, setSearch] = useState('');
+	const [loading, setLoading] = useState(true);
 	const location = useLocation();
 	const { category } = location.state || {};
 
 	const fetchData = async () => {
 		try {
 			const response = await servicesService.getAllServices();
-			console.log('All services: ', response.data);
 
 			// Filter services based on the received category (if there is a category!)
 			const filteredServices = category
@@ -26,7 +26,9 @@ const MainServicesPage = () => {
 
 			setServices(filteredServices);
 			setServicesBeforeSearch(filteredServices);
+			setLoading(false)
 		} catch (error) {
+			setLoading(false)
 			console.error(
 				'Error fetching data of all services in MainServicePage',
 				error,
@@ -52,6 +54,22 @@ const MainServicesPage = () => {
 		}
 	};
 
+	if(loading) {
+		return (
+			<div className='flex flex-col items-center mt-18'>
+				<div className='loader'>
+					<SpinnerGap
+						size={82}
+						color='#f5f581'
+					/>
+				</div>
+				<div className='text-white mt-10 text-center'>
+					Loading
+				</div>
+			</div>
+		)
+	}
+
 	return (
 		<>
 			<Search
@@ -59,8 +77,9 @@ const MainServicesPage = () => {
 				searchedService={handleSearch}
 			/>
 
+
 			<div className='all-services'>
-				{services.length === 0 ? (
+				{!loading && services.length === 0 ? (
 					<div className='flex flex-col items-center mt-18'>
 						<div>
 							<SmileySad
