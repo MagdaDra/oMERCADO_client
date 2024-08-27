@@ -59,11 +59,15 @@ const UserProfile = () => {
 
 	return (
 		<>
-			<h1>User details</h1>
-			<p>Name: {userDetails.name}</p>
-			<p>Email: {userDetails.email} </p>
-			<p>Type of account: {typeOfUserString}</p>
-			<h1>Services Offered</h1>
+			<div className='pt-4 pl-5 rounded-t-3xl bg-white text-gray-900 overflow-hidden flex-col justify-start h-32 w-full ml-5 mr-10'>
+			<h1 className='font-bold'>User details</h1>
+			<p><span className='font-bold'>Name: </span>{userDetails.name}</p>
+			<p><span className='font-bold'>Email: </span>{userDetails.email} </p>
+			<p><span className='font-bold'>Type of account: </span> {typeOfUserString}</p>
+			</div>
+
+			<div>Services Offered</div>
+
 			<div className='flex'>
 				{servicesOffered.map((service) => {
 					return (
@@ -84,10 +88,10 @@ const UserProfile = () => {
 										{service.serviceName}
 									</h2>
 									<p className='text-gray-700 text-base'>
-										Price: {service.price} €{' '}
+										Unit price: {service.price} €
 									</p>
 									<p className='text-gray-700 text-base'>
-										Quantity: {service.quantity}{' '}
+										Quantity: {service.quantity}
 									</p>
 								</div>
 
@@ -119,7 +123,9 @@ const UserProfile = () => {
 					);
 				})}
 			</div>
-			<h1>Services Sold</h1>
+
+			<div>Services Sold</div>
+
 			<div className='flex flex-wrap'>
 				{servicesSold.map((item) => {
 					return (
@@ -140,7 +146,7 @@ const UserProfile = () => {
 										{item.service.serviceName}
 									</h2>
 									<p className='text-gray-700 text-base'>
-										Price: {item.service.price * item.quantity} €
+										Total price: {item.service.price * item.quantity} €
 									</p>
 									<p className='text-gray-700 text-base'>
 										Quantity: {item.quantity}
@@ -160,21 +166,47 @@ const UserProfile = () => {
 				})}
 			</div>
 
-			<h1>Services Bought</h1>
-			{servicesBought.map((item) => {
-				return (
-					<div key={servicesBought.indexOf(item)}>
-						<Link to={`/services/${item.service._id}`}>
-							<h2>{item.service.serviceName}</h2>
-							<img
-								className='service-img'
-								src={item.service.img}></img>
-							<p>Quantity: {item.quantity}</p>
-							<p>Price: {item.unitPrice * item.quantity} € </p>
-						</Link>
-					</div>
-				);
-			})}
+			<div>Services Bought</div>
+
+			<div className='flex flex-wrap'>
+				{servicesBought.map((item) => {
+					return (
+						<div
+							key={servicesBought.indexOf(item)}
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+							<div
+								className={'h-3/5'}
+								style={{
+									backgroundImage: `url(${item.service.img})`,
+									backgroundSize: 'cover',
+									backgroundPosition: 'center',
+								}}></div>
+
+							<div className='px-6 py-6 flex justify-between'>
+								<div>
+									<h2 className='font-bold text-gray-900 text-xl mb-2'>
+										{item.service.serviceName}
+									</h2>
+									<p className='text-gray-700 text-base'>
+										Total price: {item.unitPrice * item.quantity} €
+									</p>
+									<p className='text-gray-700 text-base'>
+										Quantity: {item.quantity}
+									</p>
+								</div>
+
+								<div className='mt-2'>
+									<Link to={`/services/${item.service._id}`}>
+										<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+											Go to service
+										</button>
+									</Link>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 		</>
 	);
 };
