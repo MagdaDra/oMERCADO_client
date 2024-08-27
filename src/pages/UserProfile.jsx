@@ -59,21 +59,21 @@ const UserProfile = () => {
 
 	return (
 		<>
-			<div className='pt-4 pl-5 rounded-t-3xl bg-white text-gray-900 overflow-hidden flex-col justify-start h-32 w-full ml-5 mr-10'>
-			<h1 className='font-bold'>User details</h1>
+			<div className='pt-3 pl-5 rounded-t-3xl bg-white text-gray-900 overflow-hidden flex-col justify-start h-32 ml-5 mr-5 mt-5'>
+			<h1 className='font-bold text-lg'>User details</h1>
 			<p><span className='font-bold'>Name: </span>{userDetails.name}</p>
 			<p><span className='font-bold'>Email: </span>{userDetails.email} </p>
 			<p><span className='font-bold'>Type of account: </span> {typeOfUserString}</p>
 			</div>
 
-			<div>Services Offered</div>
+			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>Services Offered</div>
 
-			<div className='flex'>
+			<div className='flex flex-wrap'>
 				{servicesOffered.map((service) => {
 					return (
 						<div
 							key={service._id}
-							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 m-5'>
 							<div
 								className={'h-3/5'}
 								style={{
@@ -124,14 +124,14 @@ const UserProfile = () => {
 				})}
 			</div>
 
-			<div>Services Sold</div>
+			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>Services Sold</div>
 
 			<div className='flex flex-wrap'>
 				{servicesSold.map((item) => {
 					return (
 						<div
 							key={servicesSold.indexOf(item)}
-							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 m-5'>
 							<div
 								className={'h-3/5'}
 								style={{
@@ -166,14 +166,14 @@ const UserProfile = () => {
 				})}
 			</div>
 
-			<div>Services Bought</div>
+			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>Services Bought</div>
 
 			<div className='flex flex-wrap'>
 				{servicesBought.map((item) => {
 					return (
 						<div
 							key={servicesBought.indexOf(item)}
-							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 m-5'>
 							<div
 								className={'h-3/5'}
 								style={{
