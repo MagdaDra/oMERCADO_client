@@ -63,42 +63,102 @@ const UserProfile = () => {
 			<p>Name: {userDetails.name}</p>
 			<p>Email: {userDetails.email} </p>
 			<p>Type of account: {typeOfUserString}</p>
-
 			<h1>Services Offered</h1>
-			{servicesOffered.map((service) => {
-				return (
-					<div key={service._id}>
-						<Link to={`/services/${service._id}`}>
-							<h2>{service.serviceName}</h2>
-							<img
-								className='service-img'
-								src={service.img}></img>
-						</Link>
-						<p>Price: {service.price} € </p>
-						<p>Quantity: {service.quantity} </p>
-						<Link to={`/services/edit/${service._id}`}>
-							<button>Edit</button>
-						</Link>
-						<button onClick={() => handleDelete(service._id)}>Delete</button>
-					</div>
-				);
-			})}
+			<div className='flex'>
+				{servicesOffered.map((service) => {
+					return (
+						<div
+							key={service._id}
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+							<div
+								className={'h-3/5'}
+								style={{
+									backgroundImage: `url(${service.img})`,
+									backgroundSize: 'cover',
+									backgroundPosition: 'center',
+								}}></div>
 
+							<div className='px-6 py-6 flex justify-between'>
+								<div>
+									<h2 className='font-bold text-gray-900 text-xl mb-2'>
+										{service.serviceName}
+									</h2>
+									<p className='text-gray-700 text-base'>
+										Price: {service.price} €{' '}
+									</p>
+									<p className='text-gray-700 text-base'>
+										Quantity: {service.quantity}{' '}
+									</p>
+								</div>
+
+								<div>
+									<div>
+										<Link to={`/services/edit/${service._id}`}>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a]'>
+												Edit
+											</button>
+										</Link>
+
+										<button
+											onClick={() => handleDelete(service._id)}
+											className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a]'>
+											Delete
+										</button>
+									</div>
+
+									<div className='mt-2'>
+										<Link to={`/services/${service._id}`}>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+												Go to service
+											</button>
+										</Link>
+									</div>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 			<h1>Services Sold</h1>
-			{servicesSold.map((item) => {
-				return (
-					<div key={servicesSold.indexOf(item)}>
-						<Link to={`/services/${item.service._id}`}>
-							<h2>{item.service.serviceName}</h2>
-							<img
-								className='service-img'
-								src={item.service.img}></img>
-						</Link>
-						<p>Quantity: {item.quantity} </p>
-						<p>Price: {item.service.price*item.quantity} € </p>
-					</div>
-				);
-			})}
+			<div className='flex flex-wrap'>
+				{servicesSold.map((item) => {
+					return (
+						<div
+							key={servicesSold.indexOf(item)}
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+							<div
+								className={'h-3/5'}
+								style={{
+									backgroundImage: `url(${item.service.img})`,
+									backgroundSize: 'cover',
+									backgroundPosition: 'center',
+								}}></div>
+
+							<div className='px-6 py-6 flex justify-between'>
+								<div>
+									<h2 className='font-bold text-gray-900 text-xl mb-2'>
+										{item.service.serviceName}
+									</h2>
+									<p className='text-gray-700 text-base'>
+										Price: {item.service.price * item.quantity} €
+									</p>
+									<p className='text-gray-700 text-base'>
+										Quantity: {item.quantity}
+									</p>
+								</div>
+
+								<div className='mt-2'>
+									<Link to={`/services/${item.service._id}`}>
+										<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+											Go to service
+										</button>
+									</Link>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 
 			<h1>Services Bought</h1>
 			{servicesBought.map((item) => {

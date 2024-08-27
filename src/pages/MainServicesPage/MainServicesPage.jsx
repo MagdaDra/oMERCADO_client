@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import ServicesAPIService from '../../services/services.api';
 import Search from '../../components/Search';
 import './MainServicesPage.css';
+import { SmileySad } from 'phosphor-react';
 
 const servicesService = new ServicesAPIService();
 
@@ -60,7 +61,17 @@ const MainServicesPage = () => {
 
 			<div className='all-services'>
 				{services.length === 0 ? (
-					<p>No services found</p>
+					<div className='flex flex-col items-center mt-18'>
+						<div>
+							<SmileySad
+								size={82}
+								color='#f5f581'
+							/>
+						</div>
+						<div className='text-white mt-10 text-center'>
+							No services found
+						</div>
+					</div>
 				) : (
 					services.map((service) => {
 						return (
@@ -74,8 +85,7 @@ const MainServicesPage = () => {
 											backgroundImage: `url(${service.img})`,
 											backgroundSize: 'cover',
 											backgroundPosition: 'center',
-										}}>
-									</div>
+										}}></div>
 								</Link>
 								<div className='px-6 py-4'>
 									<Link to={`/services/${service._id}`}>

@@ -1,18 +1,17 @@
-import {CheckCircle} from 'phosphor-react';
+import { CheckCircle } from 'phosphor-react';
 
 function SuccessPayment() {
 	return (
 		<div className='flex flex-col items-center mt-32'>
 			<div>
-      <CheckCircle
-      size={82}
-      color='#f5f581'
-      />
-
-      </div>
+				<CheckCircle
+					size={82}
+					color='#f5f581'
+				/>
+			</div>
 			<div className='text-white mt-10 text-center'>
-				Payment completed successfully <br/> <br/> You will receive an email with all the
-				details soon
+				Payment completed successfully <br /> <br /> You will receive an email
+				with all the details soon
 			</div>
 		</div>
 	);

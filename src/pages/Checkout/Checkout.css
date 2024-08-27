@@ -1,4 +1,10 @@
-input {
+label {
+  width: 200px;
+  display: block;
+}
+
+input,
+textarea {
   width: 200px;
   padding: 10px;
   display: inline-block;
