@@ -37,9 +37,10 @@ const UserProfile = () => {
 			await servicesService.deleteService(serviceId);
 			// navigate('/user-profile')
 			// updating the state is faster to reload as we don't need a new API call, it's better for UI. We wold use navigate if there was a need to leave the page -> e.g. deleting user account
-			setServicesOffered((prevServices) =>
+			/* setServicesOffered((prevServices) =>
 				prevServices.filter((service) => service._id !== serviceId),
-			);
+			); */
+			await getUserDetails()
 		} catch (error) {
 			console.error('Failed to delete the service from UserProfile', error);
 		}

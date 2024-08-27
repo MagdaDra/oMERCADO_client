@@ -23,6 +23,7 @@ const SingleServicePage = () => {
 		try {
 			const response = await userService.getUserById(user._id);
 			setServicesOffered(response.data.servicesOffered);
+			console.log('Here', response.data.servicesOffered);
 		} catch (error) {
 			console.error('Failed to fetch user details in SingleServicePage', error);
 		}
@@ -30,9 +31,10 @@ const SingleServicePage = () => {
 
 	useEffect(() => {
 		if (user && user._id) {
+			console.log('logged in');
 			getUserDetails();
 		}
-	}, [user]);
+	}, []);
 
 	const getSingleService = async () => {
 		try {
@@ -67,9 +69,9 @@ const SingleServicePage = () => {
 				error,
 			);
 		}
+		console.log('serviceId: ', serviceId);
 	};
 
-	console.log('serviceId: ', serviceId);
 
 	// Add/Substract button
 

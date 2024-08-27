@@ -13,6 +13,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout/Checkout';
 import SuccessPayment from './pages/SuccessPayment';
 import Layout from './components/Layout';
+import Teapot from './pages/Teapot';
 import './App.css';
 
 function App() {
@@ -38,8 +39,7 @@ function App() {
 					element={
 						<Anon>
 							<Layout>
-								{' '}
-								<SignupPage />{' '}
+								<SignupPage />
 							</Layout>
 						</Anon>
 					}
@@ -50,8 +50,7 @@ function App() {
 					element={
 						<Anon>
 							<Layout>
-								{' '}
-								<LoginPage />{' '}
+								<LoginPage />
 							</Layout>
 						</Anon>
 					}
@@ -83,8 +82,7 @@ function App() {
 					path='/services/:serviceId'
 					element={
 						<Layout>
-							{' '}
-							<SingleServicePage />{' '}
+							<SingleServicePage />
 						</Layout>
 					}
 				/>
@@ -93,8 +91,7 @@ function App() {
 					path='/services/edit/:serviceId'
 					element={
 						<Layout>
-							{' '}
-							<EditService />{' '}
+							<EditService />
 						</Layout>
 					}
 				/>
@@ -103,8 +100,7 @@ function App() {
 					path='/cart'
 					element={
 						<Layout>
-							{' '}
-							<Cart />{' '}
+							<Cart />
 						</Layout>
 					}
 				/>
@@ -113,8 +109,7 @@ function App() {
 					path='/checkout'
 					element={
 						<Layout>
-							{' '}
-							<Checkout />{' '}
+							<Checkout />
 						</Layout>
 					}
 				/>
@@ -123,10 +118,14 @@ function App() {
 					path='/payment-completed'
 					element={
 						<Layout>
-							{' '}
-							<SuccessPayment />{' '}
+							<SuccessPayment />
 						</Layout>
 					}
+				/>
+
+				<Route
+					path='*'
+					element={<Teapot />}
 				/>
 			</Routes>
 		</div>
