@@ -58,7 +58,7 @@ const MainServicesPage = () => {
 
 	if(loading) {
 		return (
-			<div className='flex flex-col items-center mt-18'>
+			<div className='flex flex-col items-center mt-48'>
 				<div className='loader'>
 					<SpinnerGap
 						size={82}
