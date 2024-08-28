@@ -125,7 +125,7 @@ const EditService = () => {
 	}, []);
 
 	return (
-		<div className='flex flex-col items-center bg-white text-gray-900 rounded-2xl w-1/2 m-auto mt-14 shadow-lg shadow-gray-200'>
+		<div className='flex flex-col items-center bg-white text-gray-900 rounded-2xl md:w-1/2 m-auto mt-14 shadow-lg shadow-gray-200'>
 			<h2 className='mt-5 mb-5 font-bold'>Edit Service</h2>
 
 			<form onSubmit={handleSubmit} className='w-3/4'>
