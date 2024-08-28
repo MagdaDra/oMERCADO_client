@@ -53,7 +53,7 @@ const Cart = () => {
 			)}
 
 			{services.length > 0 && (
-				<div className=' bg-white text-gray-900 rounded-3xl w-3/4 m-auto mt-14 shadow-lg shadow-gray-200'>
+				<div className=' bg-white text-gray-900 rounded-3xl md:w-3/4 m-auto mt-14 shadow-lg shadow-gray-200'>
 					{servicesFromAPI.map((item) => {
 						const serviceInCart = services.find(
 							(service) => service._id === item._id,
@@ -63,19 +63,19 @@ const Cart = () => {
 
 						return (
 							<div
-								className='flex justify-between items-center ml-10 mr-10 pt-5 overflow-hidden'
+								className='flex flex-col items-center md:flex md:flex-row md:justify-between md:ml-10 md:mr-10 md:pt-5 md:overflow-hidden'
 								key={item._id}>
 								<div
-									className='w-20 h-20'
+									className='mt-8 w-20 h-20'
 									style={{
 										backgroundImage: `url(${item.img})`,
 										backgroundSize: 'cover',
 										backgroundPosition: 'center',
 									}}></div>
-								<p className='w-1/4'>{item.serviceName}</p>
-								<p className='w-1/5'>Unit price: {item.price} €</p>
+								<p className='mt-2 md:w-1/4'>{item.serviceName}</p>
+								<p className='mt-2 md:w-1/5'>Unit price: {item.price} €</p>
 
-								<div className='flex justify-between w-20'>
+								<div className='mt-2 flex justify-between w-20'>
 									<button
 										onClick={() =>
 											addToCart({ _id: item._id, quantity: -1 }, item.quantity)
@@ -91,11 +91,12 @@ const Cart = () => {
 									</button>
 								</div>
 
-								<div onClick={() => removeFromCart({ _id: item._id })}>
+								<div onClick={() => removeFromCart({ _id: item._id })} className='mt-2'>
 									<Trash size={20} />
 								</div>
 
-								<p>Total: {item.price * serviceInCart.quantity} €</p>
+								<p className='mt-2'>Total: {item.price * serviceInCart.quantity} €</p>
+								
 							</div>
 						);
 					})}
@@ -105,7 +106,7 @@ const Cart = () => {
 					</div>
 					<div className='flex justify-end items-center mr-10 pb-10'>
 						<Link to={'/main'}>
-							<button className='text-black text-sm font-semibold items-center rounded-full justify-center p-2 w-48 bg-[#F5F581] hover:bg-[#8d8d4a] mt-2'>
+							<button className='text-black text-sm font-semibold items-center rounded-full justify-center p-2 md:w-48 bg-[#F5F581] hover:bg-[#8d8d4a] mt-2'>
 								Continue shopping
 							</button>
 						</Link>

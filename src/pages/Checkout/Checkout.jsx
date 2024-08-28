@@ -40,45 +40,45 @@ function Checkout() {
 
 	return (
 		<>
-			<div className='bg-white text-gray-900 rounded-2xl w-1/2 m-auto mt-14 shadow-lg shadow-gray-200'>
+			<div className='bg-white text-gray-900 rounded-2xl md:w-1/2 m-auto mt-14 shadow-lg shadow-gray-200'>
 				<form
 					onSubmit={handleSubmit}
 					className='w-full pt-5'>
 					<div>
-						<div className='flex justify-center'>
+						<div className='flex flex-col md:flex-row md:justify-center'>
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/3'
+								className='rounded-md border border-gray-300 text-sm ml-6 md:ml-0 w-5/6 md:w-1/3'
 								type='string'
 								placeholder='Full name'></input>
 
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/3'
+								className='rounded-md border border-gray-300 text-sm ml-6 md:ml-0 w-5/6 md:w-1/3'
 								type='string'
 								placeholder='Email'></input>
 						</div>
 
-						<div className='flex justify-center'>
+						<div className='flex flex-col md:flex-row md:justify-center'>
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/3'
+								className='rounded-md border border-gray-300 text-sm ml-6 md:ml-0 w-5/6 md:w-1/3'
 								type='string'
 								placeholder='Name on card'></input>
 
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/3'
+								className='rounded-md border border-gray-300 text-sm ml-6 md:ml-0 w-5/6 md:w-1/3'
 								type='string'
 								placeholder='Expiration date (MM / YY)'
 							/>
 						</div>
 
-						<div className='flex justify-center'>
+						<div className='flex md:justify-center'>
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/2'
+								className='rounded-md border border-gray-300 text-sm ml-6 md:ml-0 md:w-1/2'
 								type='number'
 								placeholder='Card number'
 							/>
 
 							<input
-								className='rounded-md border border-gray-300 text-sm w-1/6'
+								className='rounded-md border border-gray-300 text-sm w-1/6 ml-1 md:w-1/6'
 								type='number'
 								placeholder='CVV'
 							/>
@@ -97,7 +97,7 @@ function Checkout() {
 
 								<button
 									type='submit'
-									className='text-white text-sm items-center w-1/2 rounded-full justify-center p-2 border bg-black hover:bg-[#9a9a9a] mt-5 mb-5'>
+									className='text-white text-sm items-center w-24 md:w-1/2 rounded-full justify-center p-2 border bg-black hover:bg-[#9a9a9a] mt-5 mb-5'>
 									Pay
 								</button>
 							</div>

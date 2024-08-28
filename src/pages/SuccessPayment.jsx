@@ -9,7 +9,7 @@ function SuccessPayment() {
 					color='#f5f581'
 				/>
 			</div>
-			<div className='text-white mt-10 text-center'>
+			<div className='text-white mt-10 ml-3 mr-3 text-center'>
 				Payment completed successfully <br /> <br /> You will receive an email
 				with all the details soon
 			</div>
