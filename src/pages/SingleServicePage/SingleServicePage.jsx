@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth.context';
 import { CartContext } from '../../context/cart.contex';
 import UserAPIService from '../../services/user.api';
 import './SingleServicePage.css';
-import { Skull } from 'phosphor-react';
+import { Skull, SpinnerGap } from 'phosphor-react';
 
 const userService = new UserAPIService();
 const servicesService = new ServicesAPIService();
@@ -18,6 +18,7 @@ const SingleServicePage = () => {
 	const navigate = useNavigate();
 	const [count, setCount] = useState(0);
 	const { addToCart } = useContext(CartContext);
+	const [loading, setLoading] = useState(true);
 
 	const getUserDetails = async () => {
 		try {
@@ -40,7 +41,9 @@ const SingleServicePage = () => {
 		try {
 			const response = await servicesService.getServiceById(serviceId);
 			setService(response.data);
+			setLoading(false)
 		} catch (error) {
+			setLoading(false)
 			console.error(
 				'Failed to fetch service details in SingleServicePage',
 				error,
@@ -109,6 +112,22 @@ const SingleServicePage = () => {
 		);
 	};
 
+	if(loading) {
+		return (
+			<div className='flex flex-col items-center mt-18'>
+				<div className='loader'>
+					<SpinnerGap
+						size={82}
+						color='#f5f581'
+					/>
+				</div>
+				<div className='text-white mt-10 text-center'>
+					Loading
+				</div>
+			</div>
+		)
+	}
+
 	return (
 		<div>
 			{!service && (
@@ -120,8 +139,8 @@ const SingleServicePage = () => {
 						/>
 					</div>
 					<div className='text-white mt-10 text-center'>
-						{' '}
-						500 <br /> Internal server error{' '}
+						
+						500 <br /> Internal server error
 					</div>
 				</div>
 			)}
