@@ -54,10 +54,26 @@ class ServicesAPIService {
 			});
 	}
 
+	desactivateService(serviceId, desactivateService) {
+		return axios.put(
+			`${this.baseURL}/api/services/${serviceId}`,
+			desactivateService,
+			{
+				headers: {
+					Authorization: `Bearer ${this.authToken}`,
+				},
+			},
+		);
+	}
+
 	getCartInfo(cart) {
-		return axios.post(`${this.baseURL}/api/cartInfo`, {cart}, {
-			headers: { Authorization: `Bearer ${this.authToken}` },
-		});
+		return axios.post(
+			`${this.baseURL}/api/cartInfo`,
+			{ cart },
+			{
+				headers: { Authorization: `Bearer ${this.authToken}` },
+			},
+		);
 	}
 }
 

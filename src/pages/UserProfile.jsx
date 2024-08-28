@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import UserAPIService from '../services/user.api';
@@ -13,6 +13,8 @@ const UserProfile = () => {
 	const [servicesSold, setServicesSold] = useState([]);
 	const [userDetails, setUserDetails] = useState({});
 
+	const navigate = useNavigate();
+
 	const { user } = useContext(AuthContext);
 
 	const getUserDetails = async () => {
@@ -21,28 +23,38 @@ const UserProfile = () => {
 			const response = await userService.getUserById(user._id);
 			setUserDetails(response.data);
 			setServicesOffered(response.data.servicesOffered);
+			console.log('servicesOffered: ', response.data.servicesOffered);
 			setServicesBought(response.data.servicesBought);
+			console.log('servicesBought: ', response.data.servicesBought);
 			setServicesSold(response.data.servicesSold);
-			console.log(
-				'Transactions after loading data: ',
-				response.data.servicesSold,
-			);
+			console.log('servicesSold: ', response.data.servicesSold);
 		} catch (error) {
 			console.error('Failed to fetch user details in UserProfile', error);
 		}
 	};
 
-	const handleDelete = async (serviceId) => {
+	// const handleDelete = async (serviceId) => {
+	// 	try {
+	// 		await servicesService.deleteService(serviceId);
+	// 		// navigate('/user-profile')
+	// 		// updating the state is faster to reload as we don't need a new API call, it's better for UI. We wold use navigate if there was a need to leave the page -> e.g. deleting user account
+	// 		/* setServicesOffered((prevServices) =>
+	// 			prevServices.filter((service) => service._id !== serviceId),
+	// 		); */
+	// 		await getUserDetails();
+	// 	} catch (error) {
+	// 		console.error('Failed to delete the service from UserProfile', error);
+	// 	}
+	// };
+
+	const handleDesactivate = async (serviceId) => {
+		const desactivateService = {
+			isActive: false,
+		};
 		try {
-			await servicesService.deleteService(serviceId);
-			// navigate('/user-profile')
-			// updating the state is faster to reload as we don't need a new API call, it's better for UI. We wold use navigate if there was a need to leave the page -> e.g. deleting user account
-			/* setServicesOffered((prevServices) =>
-				prevServices.filter((service) => service._id !== serviceId),
-			); */
-			await getUserDetails()
+			await servicesService.desactivateService(serviceId, desactivateService);
 		} catch (error) {
-			console.error('Failed to delete the service from UserProfile', error);
+			console.error('Error desactivating the service', error);
 		}
 	};
 
@@ -61,16 +73,31 @@ const UserProfile = () => {
 	return (
 		<>
 			<div className='pt-3 pl-5 rounded-t-3xl bg-white text-gray-900 overflow-hidden flex-col justify-start h-32 ml-5 mr-5 mt-5'>
-			<h1 className='font-bold text-lg'>User details</h1>
-			<p><span className='font-bold'>Name: </span>{userDetails.name}</p>
-			<p><span className='font-bold'>Email: </span>{userDetails.email} </p>
-			<p><span className='font-bold'>Type of account: </span> {typeOfUserString}</p>
+				<h1 className='font-bold text-lg'>User details</h1>
+				<p>
+					<span className='font-bold'>Name: </span>
+					{userDetails.name}
+				</p>
+				<p>
+					<span className='font-bold'>Email: </span>
+					{userDetails.email}{' '}
+				</p>
+				<p>
+					<span className='font-bold'>Type of account: </span>{' '}
+					{typeOfUserString}
+				</p>
 			</div>
 
-			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>Services Offered</div>
+			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>
+				Services Offered
+			</div>
 
 			<div className='flex flex-wrap'>
 				{servicesOffered.map((service) => {
+					if (service.isActive === false) {
+						return '';
+					}
+
 					return (
 						<div
 							key={service._id}
@@ -105,7 +132,10 @@ const UserProfile = () => {
 										</Link>
 
 										<button
-											onClick={() => handleDelete(service._id)}
+											onClick={() => {
+												handleDesactivate(service._id);
+												navigate(0);
+											}}
 											className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a]'>
 											Delete
 										</button>
@@ -125,7 +155,9 @@ const UserProfile = () => {
 				})}
 			</div>
 
-			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>Services Sold</div>
+			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>
+				Services Sold
+			</div>
 
 			<div className='flex flex-wrap'>
 				{servicesSold.map((item) => {
@@ -155,11 +187,15 @@ const UserProfile = () => {
 								</div>
 
 								<div className='mt-2'>
-									<Link to={`/services/${item.service._id}`}>
-										<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
-											Go to service
-										</button>
-									</Link>
+									{item.service.isActive ? (
+										<Link to={`/services/${item.service._id}`}>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+												Go to service
+											</button>
+										</Link>
+									) : (
+										''
+									)}
 								</div>
 							</div>
 						</div>
@@ -167,7 +203,9 @@ const UserProfile = () => {
 				})}
 			</div>
 
-			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>Services Bought</div>
+			<div className='mt-5 ml-5 mr-5 font-semibold text-lg border-b border-[#F5F581]'>
+				Services Bought
+			</div>
 
 			<div className='flex flex-wrap'>
 				{servicesBought.map((item) => {
@@ -197,11 +235,15 @@ const UserProfile = () => {
 								</div>
 
 								<div className='mt-2'>
-									<Link to={`/services/${item.service._id}`}>
-										<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
-											Go to service
-										</button>
-									</Link>
+								{item.service.isActive ? (
+										<Link to={`/services/${item.service._id}`}>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+												Go to service
+											</button>
+										</Link>
+									) : (
+										''
+									)}
 								</div>
 							</div>
 						</div>

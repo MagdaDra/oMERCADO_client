@@ -59,18 +59,31 @@ const SingleServicePage = () => {
 		(service) => service._id === serviceId,
 	);
 
-	const handleDelete = async (serviceId) => {
+	// const handleDelete = async (serviceId) => {
+	// 	try {
+	// 		await servicesService.deleteService(serviceId);
+	// 		navigate('/main');
+	// 	} catch (error) {
+	// 		console.error(
+	// 			'Failed to delete the service from SingleServicePage',
+	// 			error,
+	// 		);
+	// 	}
+	// 	console.log('serviceId: ', serviceId);
+	// };
+
+	const handleDesactivate = async (serviceId) => {
+
+		const desactivateService = {
+			isActive: false
+		};
 		try {
-			await servicesService.deleteService(serviceId);
+			await servicesService.desactivateService(serviceId, desactivateService);
 			navigate('/main');
 		} catch (error) {
-			console.error(
-				'Failed to delete the service from SingleServicePage',
-				error,
-			);
+			console.error('Error desactivating the service', error)
 		}
-		console.log('serviceId: ', serviceId);
-	};
+	}
 
 	// Add/Substract button
 
@@ -150,7 +163,7 @@ const SingleServicePage = () => {
 									</button>
 								</Link>
 								<button
-									onClick={() => handleDelete(serviceId)}
+									onClick={() => handleDesactivate(serviceId)}
 									className='text-white text-sm items-center rounded-full font-bold justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-5'>
 									Delete
 								</button>
