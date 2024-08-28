@@ -87,21 +87,21 @@ function Navbar() {
 								{/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
 
 								<Link to='/'>
-									<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+									<button className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 										Homepage
 									</button>
 								</Link>
 
 								<button
 									onClick={handleDiscoverServices}
-									className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+									className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 									Browse all
 								</button>
 
 								{!loading && user && user.typeOfUser.includes('Seller') && (
 									<>
 										<Link to='/add-service'>
-											<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+											<button className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 												Add service
 											</button>
 										</Link>
@@ -111,12 +111,12 @@ function Navbar() {
 								{!loading && !user && (
 									<>
 										<Link to='/signup'>
-											<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+											<button className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 												Sign up
 											</button>
 										</Link>
 										<Link to='/login'>
-											<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+											<button className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 												Log in
 											</button>
 										</Link>
@@ -125,7 +125,7 @@ function Navbar() {
 
 								{!loading && user && (
 									<button
-										className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'
+										className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'
 										onClick={logout}>
 										Log out
 									</button>
@@ -171,14 +171,14 @@ function Navbar() {
 					{/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
 
 					<Link to='/'>
-						<button className='rounded-full px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+						<button className='rounded-full px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 							Homepage
 						</button>
 					</Link>
 
 					<button
 						onClick={handleDiscoverServices}
-						className='rounded-md bg-black px-3 py-2 text-sm font-medium text-white'
+						className='rounded-md bg-black px-3 py-2 text-md font-medium text-white'
 						aria-current='page'>
 						Browse all
 					</button>
@@ -186,7 +186,7 @@ function Navbar() {
 					{!loading && user && user.typeOfUser.includes('Seller') && (
 						<>
 							<Link to='/add-service'>
-								<button className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+								<button className='rounded-md px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 									Add service
 								</button>
 							</Link>
@@ -196,12 +196,12 @@ function Navbar() {
 					{!loading && !user && (
 						<>
 							<Link to='/signup'>
-								<button className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+								<button className='rounded-md px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 									Sign up
 								</button>
 							</Link>
 							<Link to='/login'>
-								<button className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'>
+								<button className='rounded-md px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'>
 									Log in
 								</button>
 							</Link>
@@ -210,7 +210,7 @@ function Navbar() {
 
 					{!loading && user && (
 						<button
-							className='rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white'
+							className='rounded-md px-3 py-2 text-md font-medium hover:bg-gray-700 hover:text-white'
 							onClick={logout}>
 							Log out
 						</button>
