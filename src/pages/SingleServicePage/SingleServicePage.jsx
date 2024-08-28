@@ -24,7 +24,6 @@ const SingleServicePage = () => {
 		try {
 			const response = await userService.getUserById(user._id);
 			setServicesOffered(response.data.servicesOffered);
-			console.log('Here', response.data.servicesOffered);
 		} catch (error) {
 			console.error('Failed to fetch user details in SingleServicePage', error);
 		}
@@ -32,7 +31,6 @@ const SingleServicePage = () => {
 
 	useEffect(() => {
 		if (user && user._id) {
-			console.log('logged in');
 			getUserDetails();
 		}
 	}, []);
@@ -142,9 +140,9 @@ const SingleServicePage = () => {
 			)}
 
 			{service && (
-				<div className='single-service rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex ml-20 mr-20 mt-20'>
+				<div className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 md:flex md:ml-20 md:mr-20 mt-20'>
 					<div
-						className='w-[1000px]'
+						className='md:w-[1000px]'
 						style={{
 							backgroundImage: `url(${service.img})`,
 							backgroundSize: 'cover',
@@ -155,10 +153,10 @@ const SingleServicePage = () => {
 						<div className='font-bold text-gray-900 text-xl'>
 							{service.serviceName}
 						</div>
-						<p className='text-gray-900 mt-2 pr-5'>
+						<p className='text-gray-900 mt-2 md:pr-5'>
 							{service.serviceDescription}
 						</p>
-						<div className='flex mb-8'>
+						<div className='md:flex mb-8'>
 							<div>
 								<div className='pt-4 pb-2'>
 									{service.category.map((item) => {
@@ -177,18 +175,18 @@ const SingleServicePage = () => {
 								</p>
 								<p className='text-gray-900 mt-2'>Price: {service.price} €</p>
 							</div>
-							<div className='flex ml-20'>
+							<div className='flex md:ml-20'>
 								{isServiceOffered ? (
 									<>
 										<Link to={`/services/edit/${serviceId}`}>
-											<button className='text-white text-sm items-center rounded-full font-bold justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-28 mr-5'>
+											<button className='text-white text-sm items-center rounded-full font-bold justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] md:mt-28 mt-10 mr-5'>
 												Edit
 											</button>
 										</Link>
 										<div>
 											<button
 												onClick={() => handleDesactivate(serviceId)}
-												className='text-white text-sm items-center rounded-full font-bold justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] mt-28 mr-2'>
+												className='text-white text-sm items-center rounded-full font-bold justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a] md:mt-28 mt-10 mr-2'>
 												Delete
 											</button>
 										</div>

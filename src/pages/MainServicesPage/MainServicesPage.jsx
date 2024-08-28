@@ -25,7 +25,6 @@ const MainServicesPage = () => {
 				: response.data;
 
 			setServices(filteredServices);
-			console.log('Filtered services: ', filteredServices)
 			setServicesBeforeSearch(filteredServices);
 			setLoading(false)
 			
@@ -39,7 +38,6 @@ const MainServicesPage = () => {
 	};
 
 	useEffect(() => {
-		console.log('useEffect: Mounting');
 		fetchData();
 	}, []);
 

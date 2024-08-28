@@ -110,8 +110,8 @@ const UserProfile = () => {
 									backgroundPosition: 'center',
 								}}></div>
 
-							<div className='px-6 py-6 flex justify-between'>
-								<div>
+							<div className='pt-4 pl-3 md:px-6 md:py-6 flex'>
+								<div className='mr-2 md:mr-5'>
 									<h2 className='font-bold text-gray-900 text-xl mb-2'>
 										{service.serviceName}
 									</h2>
@@ -123,10 +123,10 @@ const UserProfile = () => {
 									</p>
 								</div>
 
-								<div>
+								<div >
 									<div>
 										<Link to={`/services/edit/${service._id}`}>
-											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a]'>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-16 md:w-24 border bg-black hover:bg-[#9a9a9a]'>
 												Edit
 											</button>
 										</Link>
@@ -136,14 +136,14 @@ const UserProfile = () => {
 												handleDesactivate(service._id);
 												navigate(0);
 											}}
-											className='text-white text-sm items-center rounded-full justify-center p-2 w-24 border bg-black hover:bg-[#9a9a9a]'>
+											className='text-white text-sm items-center rounded-full justify-center p-2 w-16 md:w-24 border bg-black hover:bg-[#9a9a9a]'>
 											Delete
 										</button>
 									</div>
 
 									<div className='mt-2'>
 										<Link to={`/services/${service._id}`}>
-											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-32 md:w-48 border bg-black hover:bg-[#9a9a9a]'>
 												Go to service
 											</button>
 										</Link>
@@ -173,7 +173,7 @@ const UserProfile = () => {
 									backgroundPosition: 'center',
 								}}></div>
 
-							<div className='px-6 py-6 flex justify-between'>
+							<div className='pt-4 pl-3 md:px-6 md:py-6 flex justify-between'>
 								<div>
 									<h2 className='font-bold text-gray-900 text-xl mb-2'>
 										{item.service.serviceName}
@@ -186,10 +186,10 @@ const UserProfile = () => {
 									</p>
 								</div>
 
-								<div className='mt-2'>
+								<div className='mt-[105px] mr-1 md:mt-2'>
 									{item.service.isActive ? (
 										<Link to={`/services/${item.service._id}`}>
-											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-32 md:w-48 border bg-black hover:bg-[#9a9a9a]'>
 												Go to service
 											</button>
 										</Link>
@@ -221,7 +221,7 @@ const UserProfile = () => {
 									backgroundPosition: 'center',
 								}}></div>
 
-							<div className='px-6 py-6 flex justify-between'>
+							<div className='pt-4 pl-3 md:px-6 md:py-6 flex justify-between'>
 								<div>
 									<h2 className='font-bold text-gray-900 text-xl mb-2'>
 										{item.service.serviceName}
@@ -234,10 +234,10 @@ const UserProfile = () => {
 									</p>
 								</div>
 
-								<div className='mt-2'>
+								<div className='mt-[105px] mr-1 md:mt-2'>
 								{item.service.isActive ? (
 										<Link to={`/services/${item.service._id}`}>
-											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-48 border bg-black hover:bg-[#9a9a9a]'>
+											<button className='text-white text-sm items-center rounded-full justify-center p-2 w-32 md:w-48 border bg-black hover:bg-[#9a9a9a]'>
 												Go to service
 											</button>
 										</Link>
