@@ -40,10 +40,12 @@ const EditService = () => {
 	};
 
 	const handlePrice = (e) => {
+		e.preventDefault()
 		setPrice(e.target.value);
 	};
 
 	const handleQuantity = (e) => {
+		e.preventDefault()
 		setQuantity(e.target.value);
 	};
 

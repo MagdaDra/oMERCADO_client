@@ -25,6 +25,7 @@ const MainServicesPage = () => {
 				: response.data;
 
 			setServices(filteredServices);
+			console.log('Filtered services: ', filteredServices)
 			setServicesBeforeSearch(filteredServices);
 			setLoading(false)
 			
@@ -93,11 +94,12 @@ const MainServicesPage = () => {
 						</div>
 					</div>
 				) : (
-					services.map((service) => {
+					<div className='flex justify-center flex-wrap'>
+					{services.map((service) => {
 						return (
 							<div
 								key={service._id}
-								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 ml-5 mr-5'>
+								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-96 mb-10 ml-4 mr-4'>
 								<Link to={`/services/${service._id}`}>
 									<div
 										className={'h-3/5'}
@@ -131,7 +133,8 @@ const MainServicesPage = () => {
 								</div>
 							</div>
 						);
-					})
+					})}
+					</div>
 				)}
 			</div>
 		</>

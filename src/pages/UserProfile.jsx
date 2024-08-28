@@ -101,7 +101,7 @@ const UserProfile = () => {
 					return (
 						<div
 							key={service._id}
-							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 m-5'>
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-96 mb-10 ml-4 mr-4 mt-10'>
 							<div
 								className={'h-3/5'}
 								style={{
@@ -164,7 +164,7 @@ const UserProfile = () => {
 					return (
 						<div
 							key={servicesSold.indexOf(item)}
-							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 m-5'>
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-96 mb-10 ml-4 mr-4 mt-10'>
 							<div
 								className={'h-3/5'}
 								style={{
@@ -212,7 +212,7 @@ const UserProfile = () => {
 					return (
 						<div
 							key={servicesBought.indexOf(item)}
-							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-2/6 m-5'>
+							className='rounded-3xl bg-white text-gray-900 overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-96 w-96 mb-10 ml-4 mr-4 mt-10'>
 							<div
 								className={'h-3/5'}
 								style={{

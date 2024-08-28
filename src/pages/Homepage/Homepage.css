@@ -74,7 +74,7 @@ body {
 		background-color: rgb(0, 0, 0);
 		width: 20vw;
 		height: 20vw;
-		border-radius: 100px;
+		border-radius: 50%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -182,7 +182,7 @@ body {
 
 	.design-text {
 		background-color: black;
-		border-radius: 100px;
+		border-radius: 50%;
 		width: 13vw;
 		height: 13vw;
 		display: flex;
