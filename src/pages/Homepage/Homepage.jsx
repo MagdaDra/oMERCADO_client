@@ -25,7 +25,7 @@ function Homepage() {
 				</div>
 
 				{!loading && !user && (
-					<div className='flex justify-between pt-12 w-60 pl-8'>
+					<div className='flex justify-around md:justify-between pl-4 w-60 md:w-60 mb-8 md:mb-0 md:pl-8 md:pt-20 md:mr-2'>
 						<Link to='/signup'>
 							<button className='text-white font-bold text-sm items-center rounded-full justify-center p-2 w-24 border border-white hover:bg-[#9a9a9a]'>
 								Sign up

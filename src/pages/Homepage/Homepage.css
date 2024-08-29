@@ -18,6 +18,8 @@ body {
 		font-size: 32px;
 		font-weight: 900;
 		margin-bottom: 28px;
+		margin-top: 20px;
+		margin-left: 10px;
 	}
 
 	.o {
@@ -25,10 +27,11 @@ body {
 	}
 
 	.header-description {
-		width: 80%;
+		width: 80vw;
 		line-height: 30px;
 		font-weight: 100;
-		margin-bottom: 20px;
+		margin-left: 10px;
+		margin-bottom: 20px
 	}
 
 	.auth-buttons-header {
@@ -45,6 +48,7 @@ body {
 	.browse-button {
 		margin: 0 auto;
 		margin-top: 20px;
+		margin-bottom: 40px;
 	}
 
 	.category-button {
@@ -143,6 +147,7 @@ body {
 	.browse-button {
 		margin: 0 auto;
 		margin-top: 25px;
+		margin-bottom: 20px;
 	}
 
 	.header-and-description {
