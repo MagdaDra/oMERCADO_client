@@ -149,7 +149,7 @@ const SingleServicePage = () => {
 							backgroundPosition: 'center',
 						}}>
 					</div>
-					<div className='mt-7 ml-7 flex flex-col justify-evenly'>
+					<div className='mt-7 ml-7 mr-2 flex flex-col justify-evenly'>
 						<div className='font-bold text-gray-900 text-xl'>
 							{service.serviceName}
 						</div>
