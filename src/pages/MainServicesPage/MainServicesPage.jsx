@@ -97,7 +97,7 @@ const MainServicesPage = () => {
 						return (
 							<div
 								key={service._id}
-								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start w-full md:w-96 mb-10 ml-4 mr-4 sm:'>
+								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start w-[290px] md:w-96 mb-10 ml-4 mr-4'>
 								<Link to={`/services/${service._id}`}>
 									<div
 										className={'h-[250px]'}
