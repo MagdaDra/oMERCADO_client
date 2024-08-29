@@ -1,6 +1,5 @@
 # oMERCADO
 
-<br>
 
 ## Description
 
