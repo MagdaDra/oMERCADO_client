@@ -142,7 +142,7 @@ const SingleServicePage = () => {
 			{service && (
 				<div className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 md:flex md:ml-20 md:mr-20 mt-20'>
 					<div
-						className='md:w-2/3'
+						className='md:min-w-[30%]'
 						style={{
 							backgroundImage: `url(${service.img})`,
 							backgroundSize: 'cover',
