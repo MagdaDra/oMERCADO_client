@@ -90,9 +90,11 @@ function App() {
 				<Route
 					path='/services/edit/:serviceId'
 					element={
-						<Layout>
-							<EditService />
-						</Layout>
+						<Private>
+							<Layout>
+								<EditService />
+							</Layout>
+						</Private>
 					}
 				/>
 
