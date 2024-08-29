@@ -51,7 +51,6 @@ const MainServicesPage = () => {
 			});
 
 			setServices(servicesAfterSearch);
-			console.log(servicesAfterSearch)
 		}
 	};
 
