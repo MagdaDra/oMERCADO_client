@@ -6,7 +6,7 @@ const Search = (props) => {
 	return (
 		
 		<div className='flex justify-center'>
-			<form className='border border-gray-400 w-3/5 rounded-s-full rounded-e-full h-12 flex mt-5'>
+			<form className='border border-gray-400 w-[270px] md:w-3/5 rounded-s-full rounded-e-full h-12 flex mt-5'>
 				<input
 					className='w-full bg-[#0d1829] flex bg-transparent pl-2 text-[#cccccc] outline-0'
 					type='text'
