@@ -97,10 +97,10 @@ const MainServicesPage = () => {
 						return (
 							<div
 								key={service._id}
-								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start h-[520px] w-full md:w-96 md:h-96 mb-10 ml-4 mr-4 sm:'>
+								className='rounded-3xl bg-white overflow-hidden shadow-lg shadow-gray-200 flex-col justify-start w-full md:w-96 mb-10 ml-4 mr-4 sm:'>
 								<Link to={`/services/${service._id}`}>
 									<div
-										className={'h-3/5'}
+										className={'h-[250px]'}
 										style={{
 											backgroundImage: `url(${service.img})`,
 											backgroundSize: 'cover',
