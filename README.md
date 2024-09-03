@@ -201,9 +201,6 @@ Components:
 
 [Deployed App Link](https://omercado.netlify.app/)
 
-### Slides
-
-[Slides Link](https://docs.google.com/presentation/d/1488bwP0VfEAdxemp_pqvsktHaCsZcO2CSN1ev7ytroY/edit?usp=sharing) - The url to the product presentation slides
 
 ### Contributors
 
