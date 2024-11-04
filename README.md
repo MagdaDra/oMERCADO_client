@@ -93,7 +93,6 @@ Components:
     { type: String, required: true, enum: ['Customer', 'Seller'] },
   ],
   name: String,
-  img: String,
   servicesBought: [{ type: Schema.Types.ObjectId, ref: 'Transaction' }],
   servicesOffered: [{ type: Schema.Types.ObjectId, ref: 'Service' }]	,
   servicesSold: [
@@ -102,7 +101,6 @@ Components:
       quantity: Number
     }
   ],
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 },
 {
   timestamps: true,
@@ -174,8 +172,8 @@ Components:
 | GET         | `/api/services/:serviceId`      |                                                                           | 200            | 400          | Show specific service                                                                                            |
 | POST        | `/api/services`                 | { serviceName, serviceDescription, quantity, price, date, img, category } | 201            | 400          | Create and save a new service                                                                                    |
 | PUT         | `/api/services/edit/:serviceId` | { serviceName, serviceDescription, quantity, price, date, img, category } | 200            | 400          | Edit service                                                                                                     |
-| DELETE      | `/api/services/:id`             |                                                                           | 204            | 400          | Delete service                                                                                                   |
-| PUT         | `/api/services/:id`             | {isActive}                                                                | 200            | 400          | Desactivate service                                                                                              |
+| DELETE      | `/api/services/:serviceId`      |                                                                           | 204            | 400          | Delete service                                                                                                   |
+| PUT         | `/api/services/:serviceId`      | {isActive}                                                                | 200            | 400          | Desactivate service                                                                                              |
 | GET         | `/api/user/:userId`             |                                                                           | 200            | 400          | Show specific user details user                                                                                  | 
 | POST        | `/api/checkout`                 | { userId, cart, total }                                                   | 200            | 400          | Create new transaction and add it to buyer's servicesBought and seller's servicesSold                            |
 | POST        | `/api/cartInfo`                 | {cart}                                                                    | 200            | 400          | Fetch services info for each item in the cart                                                                    |
